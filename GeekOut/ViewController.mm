@@ -14,6 +14,8 @@
 
 @implementation ViewController
 
+@synthesize videoCamera;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,4 +28,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startAction:(id)sender {
+}
 @end

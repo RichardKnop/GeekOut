@@ -17,7 +17,7 @@
 		D9725C9E17108C060083290D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9D17108C060083290D /* Default@2x.png */; };
 		D9725CA017108C060083290D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9F17108C060083290D /* Default-568h@2x.png */; };
 		D9725CA317108C060083290D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9725CA117108C060083290D /* MainStoryboard.storyboard */; };
-		D9725CA617108C060083290D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9725CA517108C060083290D /* ViewController.m */; };
+		D9725CA617108C060083290D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9725CA517108C060083290D /* ViewController.mm */; };
 		D9725CAD17108D3A0083290D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CAC17108D3A0083290D /* AVFoundation.framework */; };
 		D9725CAF17108D4B0083290D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CAE17108D4B0083290D /* ImageIO.framework */; };
 		D9725CB117108D580083290D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB017108D580083290D /* CoreVideo.framework */; };
@@ -41,7 +41,7 @@
 		D9725C9F17108C060083290D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D9725CA217108C060083290D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D9725CA417108C060083290D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D9725CA517108C060083290D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D9725CA517108C060083290D /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		D9725CAC17108D3A0083290D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D9725CAE17108D4B0083290D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		D9725CB017108D580083290D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -107,7 +107,7 @@
 				D9725C9917108C060083290D /* AppDelegate.m */,
 				D9725CA117108C060083290D /* MainStoryboard.storyboard */,
 				D9725CA417108C060083290D /* ViewController.h */,
-				D9725CA517108C060083290D /* ViewController.m */,
+				D9725CA517108C060083290D /* ViewController.mm */,
 				D9725C9017108C060083290D /* Supporting Files */,
 			);
 			path = GeekOut;
@@ -195,7 +195,7 @@
 			files = (
 				D9725C9617108C060083290D /* main.m in Sources */,
 				D9725C9A17108C060083290D /* AppDelegate.m in Sources */,
-				D9725CA617108C060083290D /* ViewController.m in Sources */,
+				D9725CA617108C060083290D /* ViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
