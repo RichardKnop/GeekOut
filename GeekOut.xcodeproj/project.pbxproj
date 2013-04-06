@@ -18,6 +18,11 @@
 		D9725CA017108C060083290D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9F17108C060083290D /* Default-568h@2x.png */; };
 		D9725CA317108C060083290D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9725CA117108C060083290D /* MainStoryboard.storyboard */; };
 		D9725CA617108C060083290D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9725CA517108C060083290D /* ViewController.m */; };
+		D9725CAD17108D3A0083290D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CAC17108D3A0083290D /* AVFoundation.framework */; };
+		D9725CAF17108D4B0083290D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CAE17108D4B0083290D /* ImageIO.framework */; };
+		D9725CB117108D580083290D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB017108D580083290D /* CoreVideo.framework */; };
+		D9725CB317108D5D0083290D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB217108D5D0083290D /* CoreMedia.framework */; };
+		D9725CB517108D6E0083290D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB417108D6E0083290D /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,11 @@
 		D9725CA217108C060083290D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		D9725CA417108C060083290D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D9725CA517108C060083290D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D9725CAC17108D3A0083290D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D9725CAE17108D4B0083290D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		D9725CB017108D580083290D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D9725CB217108D5D0083290D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D9725CB417108D6E0083290D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9725CB517108D6E0083290D /* libz.dylib in Frameworks */,
+				D9725CB317108D5D0083290D /* CoreMedia.framework in Frameworks */,
+				D9725CB117108D580083290D /* CoreVideo.framework in Frameworks */,
+				D9725CAF17108D4B0083290D /* ImageIO.framework in Frameworks */,
+				D9725CAD17108D3A0083290D /* AVFoundation.framework in Frameworks */,
 				D9725C8A17108C060083290D /* UIKit.framework in Frameworks */,
 				D9725C8C17108C060083290D /* Foundation.framework in Frameworks */,
 				D9725C8E17108C060083290D /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +71,11 @@
 		D9725C7D17108C060083290D = {
 			isa = PBXGroup;
 			children = (
+				D9725CB417108D6E0083290D /* libz.dylib */,
+				D9725CB217108D5D0083290D /* CoreMedia.framework */,
+				D9725CB017108D580083290D /* CoreVideo.framework */,
+				D9725CAE17108D4B0083290D /* ImageIO.framework */,
+				D9725CAC17108D3A0083290D /* AVFoundation.framework */,
 				D9725C8F17108C060083290D /* GeekOut */,
 				D9725C8817108C060083290D /* Frameworks */,
 				D9725C8717108C060083290D /* Products */,
@@ -262,7 +282,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeekOut/GeekOut-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = "GeekOut/GeekOut-Info.plist";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -273,7 +295,9 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeekOut/GeekOut-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = "GeekOut/GeekOut-Info.plist";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
