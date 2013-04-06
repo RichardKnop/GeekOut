@@ -40,8 +40,27 @@
     cvtColor(image, image_copy, CV_BGRA2BGR);
     
     // invert image
-    bitwise_not(image_copy, image_copy);
-    cvtColor(image_copy, image, CV_BGR2BGRA);
+    //bitwise_not(image_copy, image_copy);
+    //cvtColor(image_copy, image, CV_BGR2BGRA);
+    
+    // grey image
+    //cvtColor(image_copy, image, CV_BGR2GRAY);
+    
+    // binary image
+    //threshold(image_copy, image_copy, 20, 255, THRESH_BINARY);
+    //cvtColor(image_copy, image, CV_BGR2GRAY);
+    
+    // hsv image
+    //cvtColor(image_copy, image, CV_BGR2HSV);
+    
+    // luv image
+    //cvtColor(image_copy, image, CV_BGR2Luv);
+    
+    // hls image
+    //cvtColor(image_copy, image, CV_BGR2HLS);
+    
+    // lab image
+    //cvtColor(image_copy, image, CV_BGR2Lab);
 }
 #endif
 
