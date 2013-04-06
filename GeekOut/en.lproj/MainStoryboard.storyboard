@@ -12,7 +12,12 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4E-FA-0gl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjX-Nm-3qm">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="327" id="YVH-6h-ckX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNM-Bp-lmU">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -22,44 +27,23 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startAction:" destination="2" eventType="touchUpInside" id="zz3-jY-aiX"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjX-Nm-3qm">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="327" id="YVH-6h-ckX"/>
-                                    <constraint firstAttribute="height" constant="400" id="c5X-Za-Lxc"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ken-Xc-SLL">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stopAction:" destination="2" eventType="touchUpInside" id="1md-hI-2nb"/>
+                                    <action selector="startStopAction:" destination="2" eventType="touchUpInside" id="DvX-r4-0FB"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ken-Xc-SLL" firstAttribute="leading" secondItem="a4E-FA-0gl" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Yet-Hh-mMx"/>
-                            <constraint firstItem="ken-Xc-SLL" firstAttribute="baseline" secondItem="a4E-FA-0gl" secondAttribute="baseline" type="default" id="aR7-jX-dCq"/>
-                            <constraint firstItem="a4E-FA-0gl" firstAttribute="top" secondItem="LjX-Nm-3qm" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fQS-xS-gQE"/>
-                            <constraint firstItem="a4E-FA-0gl" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="j3o-5U-SeH"/>
+                            <constraint firstAttribute="bottom" secondItem="XNM-Bp-lmU" secondAttribute="bottom" constant="10" id="Shz-cq-P8z"/>
+                            <constraint firstItem="XNM-Bp-lmU" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="14" id="lzG-G0-fBf"/>
                             <constraint firstItem="LjX-Nm-3qm" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ojS-Xy-inA"/>
                             <constraint firstItem="LjX-Nm-3qm" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="t1y-wb-m1G"/>
+                            <constraint firstItem="LjX-Nm-3qm" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="y7F-Ki-n71"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="LjX-Nm-3qm" id="vso-aw-KIQ"/>
-                        <outlet property="startButton" destination="a4E-FA-0gl" id="pYj-py-chb"/>
-                        <outlet property="stopButton" destination="ken-Xc-SLL" id="SLJ-4x-oJa"/>
+                        <outlet property="startStopButton" destination="XNM-Bp-lmU" id="hAb-Vb-3Qn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -67,21 +51,6 @@
             <point key="canvasLocation" x="6" y="-39"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startAction:"/>
-                <relationship kind="action" name="stopAction:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stopButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

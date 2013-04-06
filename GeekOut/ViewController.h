@@ -15,13 +15,14 @@ using namespace cv;
 @interface ViewController : UIViewController<CvVideoCameraDelegate>
 {
     CvVideoCamera* videoCamera;
+    BOOL isStarted;
 }
 
 @property (nonatomic, retain) CvVideoCamera* videoCamera;
+@property (nonatomic, assign) BOOL isStarted;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *startButton;
-- (IBAction)startAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *stopButton;
-- (IBAction)stopAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *startStopButton;
+- (IBAction)startStopAction:(id)sender;
+
 @end

@@ -15,11 +15,15 @@
 @implementation ViewController
 
 @synthesize videoCamera;
+@synthesize isStarted;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.imageView.backgroundColor = [UIColor darkGrayColor];
+    self.isStarted = NO;
     
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     self.videoCamera.delegate = self;
@@ -72,11 +76,18 @@
 
 #pragma mark - UI Actions
 
-- (IBAction)startAction:(id)sender;
+- (IBAction)startStopAction:(id)sender;
 {
-    [self.videoCamera start];
+    if (self.isStarted == NO) {
+        [self.videoCamera start];
+        self.isStarted = YES;
+        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+    } else {
+        [self.videoCamera stop];
+        self.isStarted = NO;
+        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    }
+    
 }
-- (IBAction)stopAction:(id)sender {
-    [self.videoCamera stop];
-}
+
 @end
