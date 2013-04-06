@@ -11,7 +11,7 @@
 #import <opencv2/highgui/cap_ios.h>
 using namespace cv;
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<CvVideoCameraDelegate>
 {
     CvVideoCamera* videoCamera;
 }
@@ -21,4 +21,6 @@ using namespace cv;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 - (IBAction)startAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
+- (IBAction)stopAction:(id)sender;
 @end
