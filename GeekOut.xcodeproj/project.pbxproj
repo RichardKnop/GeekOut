@@ -11,8 +11,8 @@
 		D9725C8C17108C060083290D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8B17108C060083290D /* Foundation.framework */; };
 		D9725C8E17108C060083290D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8D17108C060083290D /* CoreGraphics.framework */; };
 		D9725C9417108C060083290D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9217108C060083290D /* InfoPlist.strings */; };
-		D9725C9617108C060083290D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9725C9517108C060083290D /* main.m */; };
-		D9725C9A17108C060083290D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9725C9917108C060083290D /* AppDelegate.m */; };
+		D9725C9617108C060083290D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9725C9517108C060083290D /* main.mm */; };
+		D9725C9A17108C060083290D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9725C9917108C060083290D /* AppDelegate.mm */; };
 		D9725C9C17108C060083290D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9B17108C060083290D /* Default.png */; };
 		D9725C9E17108C060083290D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9D17108C060083290D /* Default@2x.png */; };
 		D9725CA017108C060083290D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9725C9F17108C060083290D /* Default-568h@2x.png */; };
@@ -23,6 +23,11 @@
 		D9725CB117108D580083290D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB017108D580083290D /* CoreVideo.framework */; };
 		D9725CB317108D5D0083290D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB217108D5D0083290D /* CoreMedia.framework */; };
 		D9725CB517108D6E0083290D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CB417108D6E0083290D /* libz.dylib */; };
+		D9725CBF1710A4250083290D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CBE1710A4250083290D /* Accelerate.framework */; };
+		D9725CC11710A4310083290D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CC01710A4310083290D /* AssetsLibrary.framework */; };
+		D9725CC31710A4450083290D /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CC21710A4450083290D /* CoreImage.framework */; };
+		D9725CC51710A44F0083290D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CC41710A44F0083290D /* QuartzCore.framework */; };
+		D9725CC91710A58A0083290D /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725CC81710A58A0083290D /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +37,10 @@
 		D9725C8D17108C060083290D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D9725C9117108C060083290D /* GeekOut-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeekOut-Info.plist"; sourceTree = "<group>"; };
 		D9725C9317108C060083290D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D9725C9517108C060083290D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D9725C9517108C060083290D /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		D9725C9717108C060083290D /* GeekOut-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeekOut-Prefix.pch"; sourceTree = "<group>"; };
 		D9725C9817108C060083290D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D9725C9917108C060083290D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D9725C9917108C060083290D /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		D9725C9B17108C060083290D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		D9725C9D17108C060083290D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D9725C9F17108C060083290D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -47,6 +52,11 @@
 		D9725CB017108D580083290D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		D9725CB217108D5D0083290D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		D9725CB417108D6E0083290D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D9725CBE1710A4250083290D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		D9725CC01710A4310083290D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D9725CC21710A4450083290D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		D9725CC41710A44F0083290D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D9725CC81710A58A0083290D /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = "../OpenCV-iOS/opencv2.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9725CC91710A58A0083290D /* opencv2.framework in Frameworks */,
+				D9725CC51710A44F0083290D /* QuartzCore.framework in Frameworks */,
+				D9725CC31710A4450083290D /* CoreImage.framework in Frameworks */,
+				D9725CC11710A4310083290D /* AssetsLibrary.framework in Frameworks */,
+				D9725CBF1710A4250083290D /* Accelerate.framework in Frameworks */,
 				D9725CB517108D6E0083290D /* libz.dylib in Frameworks */,
 				D9725CB317108D5D0083290D /* CoreMedia.framework in Frameworks */,
 				D9725CB117108D580083290D /* CoreVideo.framework in Frameworks */,
@@ -88,6 +103,11 @@
 		D9725C8817108C060083290D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9725CC81710A58A0083290D /* opencv2.framework */,
+				D9725CC41710A44F0083290D /* QuartzCore.framework */,
+				D9725CC21710A4450083290D /* CoreImage.framework */,
+				D9725CC01710A4310083290D /* AssetsLibrary.framework */,
+				D9725CBE1710A4250083290D /* Accelerate.framework */,
 				D9725CB417108D6E0083290D /* libz.dylib */,
 				D9725CB217108D5D0083290D /* CoreMedia.framework */,
 				D9725CB017108D580083290D /* CoreVideo.framework */,
@@ -104,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				D9725C9817108C060083290D /* AppDelegate.h */,
-				D9725C9917108C060083290D /* AppDelegate.m */,
+				D9725C9917108C060083290D /* AppDelegate.mm */,
 				D9725CA117108C060083290D /* MainStoryboard.storyboard */,
 				D9725CA417108C060083290D /* ViewController.h */,
 				D9725CA517108C060083290D /* ViewController.mm */,
@@ -118,7 +138,7 @@
 			children = (
 				D9725C9117108C060083290D /* GeekOut-Info.plist */,
 				D9725C9217108C060083290D /* InfoPlist.strings */,
-				D9725C9517108C060083290D /* main.m */,
+				D9725C9517108C060083290D /* main.mm */,
 				D9725C9717108C060083290D /* GeekOut-Prefix.pch */,
 				D9725C9B17108C060083290D /* Default.png */,
 				D9725C9D17108C060083290D /* Default@2x.png */,
@@ -193,8 +213,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9725C9617108C060083290D /* main.m in Sources */,
-				D9725C9A17108C060083290D /* AppDelegate.m in Sources */,
+				D9725C9617108C060083290D /* main.mm in Sources */,
+				D9725C9A17108C060083290D /* AppDelegate.mm in Sources */,
 				D9725CA617108C060083290D /* ViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,11 +300,17 @@
 		D9725CAA17108C060083290D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../OpenCV_ios_framework\"",
+					"\"$(SRCROOT)/../OpenCV-iOS\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeekOut/GeekOut-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = "/Users/richardknop/Projects/OpenCV-iOS/opencv2.framework/Headers/";
 				INFOPLIST_FILE = "GeekOut/GeekOut-Info.plist";
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -293,11 +319,17 @@
 		D9725CAB17108C060083290D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libstdc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../OpenCV_ios_framework\"",
+					"\"$(SRCROOT)/../OpenCV-iOS\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeekOut/GeekOut-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = "/Users/richardknop/Projects/OpenCV-iOS/opencv2.framework/Headers/";
 				INFOPLIST_FILE = "GeekOut/GeekOut-Info.plist";
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
