@@ -18,11 +18,13 @@ using namespace cv;
     BOOL isStarted;
 }
 
+- (void)filtersClicked;
+
 @property (nonatomic, retain) CvVideoCamera* videoCamera;
 @property (nonatomic, assign) BOOL isStarted;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIButton *startStopButton;
-- (IBAction)startStopAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
+- (IBAction)toggleVideoAction:(id)sender;
 
 @end

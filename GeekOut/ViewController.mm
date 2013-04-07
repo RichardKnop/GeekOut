@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FiltersController.h"
 
 @interface ViewController ()
 
@@ -25,6 +26,9 @@
     self.imageView.backgroundColor = [UIColor darkGrayColor];
     self.isStarted = NO;
     
+    UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
+    self.navigationItem.rightBarButtonItem = filtersButton;
+    
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     self.videoCamera.delegate = self;
     self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
@@ -32,6 +36,11 @@
     self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     self.videoCamera.defaultFPS = 30;
     self.videoCamera.grayscaleMode = NO;
+}
+
+- (void)filtersClicked
+{
+    [self performSegueWithIdentifier:@"GoToFiltersSegue" sender:self];
 }
 
 #pragma mark - Protocol CvVideoCameraDelegate
@@ -76,16 +85,16 @@
 
 #pragma mark - UI Actions
 
-- (IBAction)startStopAction:(id)sender;
+- (IBAction)toggleVideoAction:(id)sender;
 {
     if (self.isStarted == NO) {
         [self.videoCamera start];
         self.isStarted = YES;
-        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+        self.startButton.title = @"Stop";
     } else {
         [self.videoCamera stop];
         self.isStarted = NO;
-        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        self.startButton.title = @"Start";
     }
     
 }
