@@ -73,6 +73,50 @@
     Mat image_copy;
     cvtColor(image, image_copy, CV_BGRA2BGR);
     
+    if (0 == videoFilter) {
+        int erosion_size = 2;
+        cv::Mat element = cv::getStructuringElement(cv::MORPH_ELLIPSE,
+                                                    cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
+                                                    cv::Point(erosion_size, erosion_size) );
+        cv::erode(image_copy, image, element);
+    } else if (1 == videoFilter) {
+        int erosion_size = 2;
+        cv::Mat element = cv::getStructuringElement(cv::MORPH_ELLIPSE,
+                                                    cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
+                                                    cv::Point(erosion_size, erosion_size) );
+        cv::dilate(image_copy, image, element);
+    } else if (2 == videoFilter) {
+        Mat kern = (Mat_<char>(3,3) <<  0, -1,  0,
+                    -1,  5, -1,
+                    0, -1,  0);
+        filter2D(image_copy, image, image_copy.depth(), kern );
+    } else if (3 == videoFilter) {
+        Mat kern = (Mat_<char>(3,3) <<  0, -1,  0,
+                    -1,  5, -1,
+                    0, -1,  0);
+        filter2D(image_copy, image, image_copy.depth(), kern );
+    } else if (4 == videoFilter) {
+        Mat kern = (Mat_<char>(4,4) <<  2, 0, 0, 0,
+                    0, 2, 0, 0,
+                    0, 0, 2, 0,
+                    0, 0, 0, 2);
+        cv::transform(image_copy, image, kern);
+        image += cv::Scalar(2, 2, 2, 0);
+    } else if (5 == videoFilter) {
+        Mat kern = (Mat_<char>(4,4) <<  0.272, 0.534, 0.131, 0,
+                    0.349, 0.686, 0.168, 0,
+                    0.393, 0.769, 0.189, 0,
+                    0, 0, 0, 1);
+        cv::transform(image_copy, image, kern);
+    } else if (6 == videoFilter) {
+        bitwise_not(image_copy, image_copy);
+        cvtColor(image_copy, image, CV_BGR2BGRA);
+    } else if (7 == videoFilter) {
+        cvtColor(image_copy, image, CV_BGR2GRAY);
+    } else if (8 == videoFilter) {
+        cvtColor(image_copy, image, CV_BGR2Luv);
+    }
+    
     // invert image
     //bitwise_not(image_copy, image_copy);
     //cvtColor(image_copy, image, CV_BGR2BGRA);
