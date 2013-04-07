@@ -1,5 +1,5 @@
 //
-//  FiltersController.h
+//  FilterCollectionController.h
 //  GeekOut
 //
 //  Created by Richard Knop on 07/04/2013.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FiltersController : UIViewController
+@interface FilterCollectionController : UICollectionViewController
 
 @end

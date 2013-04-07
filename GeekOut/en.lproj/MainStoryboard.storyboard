@@ -48,28 +48,76 @@
                         <outlet property="imageView" destination="LjX-Nm-3qm" id="vso-aw-KIQ"/>
                         <outlet property="startButton" destination="qrd-gC-SqR" id="hdi-Cl-xUI"/>
                         <outlet property="switchCameraButton" destination="Vwc-2v-uVu" id="caV-9M-30y"/>
-                        <segue destination="Mxr-Wx-ZHu" kind="push" identifier="GoToFiltersSegue" id="lRU-BT-tUM"/>
+                        <segue destination="Psq-wZ-y87" kind="push" identifier="GoToFiltersSegue" id="EnW-rd-cma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="538" y="-39"/>
         </scene>
-        <!--Filters Controller-->
-        <scene sceneID="7zD-9k-vOV">
+        <!--Filter Collection Controller-->
+        <scene sceneID="kb6-Sk-IOj">
             <objects>
-                <viewController id="Mxr-Wx-ZHu" customClass="FiltersController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kv2-Wf-Y2B">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Psq-wZ-y87" customClass="FilterCollectionController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="5e4-wy-8mp">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Jnv-bA-5wO"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CCo-95-pV1">
+                            <size key="itemSize" width="96" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="ngp-Ps-Ew4" customClass="FilterCell">
+                                <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amp-A5-NzR">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="96" id="okA-Ca-XeC"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwX-Zf-Gew">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="61f-yp-2qg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="iwX-Zf-Gew" firstAttribute="trailing" secondItem="ngp-Ps-Ew4" secondAttribute="trailing" type="default" id="AII-Iz-56c"/>
+                                    <constraint firstItem="amp-A5-NzR" firstAttribute="trailing" secondItem="ngp-Ps-Ew4" secondAttribute="trailing" type="default" id="Qvr-6z-Ptb"/>
+                                    <constraint firstItem="iwX-Zf-Gew" firstAttribute="bottom" secondItem="ngp-Ps-Ew4" secondAttribute="bottom" type="default" id="eg7-YQ-RXO"/>
+                                    <constraint firstItem="iwX-Zf-Gew" firstAttribute="leading" secondItem="ngp-Ps-Ew4" secondAttribute="leading" type="default" id="i86-x6-eEf"/>
+                                    <constraint firstItem="amp-A5-NzR" firstAttribute="leading" secondItem="ngp-Ps-Ew4" secondAttribute="leading" type="default" id="mQI-pc-oVw"/>
+                                    <constraint firstItem="amp-A5-NzR" firstAttribute="top" secondItem="ngp-Ps-Ew4" secondAttribute="top" type="default" id="yrL-6j-pes"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="filterImage" destination="amp-A5-NzR" id="vvP-Nc-XQu"/>
+                                    <outlet property="filterLabel" destination="iwX-Zf-Gew" id="f2E-Ua-BYz"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Psq-wZ-y87" id="BOL-WV-9XR"/>
+                            <outlet property="delegate" destination="Psq-wZ-y87" id="tOp-pA-hb7"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="G3f-7o-94N"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w69-4H-ELh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDS-dQ-Mvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="-39"/>
+            <point key="canvasLocation" x="1039" y="-39"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="roy-VC-zW3">

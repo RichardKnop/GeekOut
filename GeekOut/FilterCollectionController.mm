@@ -1,18 +1,18 @@
 //
-//  FiltersController.m
+//  FilterCollectionController.m
 //  GeekOut
 //
 //  Created by Richard Knop on 07/04/2013.
 //  Copyright (c) 2013 Richard Knop. All rights reserved.
 //
 
-#import "FiltersController.h"
+#import "FilterCollectionController.h"
 
-@interface FiltersController ()
+@interface FilterCollectionController ()
 
 @end
 
-@implementation FiltersController
+@implementation FilterCollectionController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
