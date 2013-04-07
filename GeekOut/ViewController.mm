@@ -99,4 +99,8 @@
     
 }
 
+- (IBAction)switchCameraAction:(id)sender {
+    [self.videoCamera switchCameras];
+}
+
 @end

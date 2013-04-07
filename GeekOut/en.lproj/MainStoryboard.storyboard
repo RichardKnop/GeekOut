@@ -24,6 +24,11 @@
                                             <action selector="toggleVideoAction:" destination="2" id="YK9-NS-fN8"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Swtich Camera" id="Vwc-2v-uVu">
+                                        <connections>
+                                            <action selector="switchCameraAction:" destination="2" id="lTO-4l-9iO"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -42,6 +47,7 @@
                     <connections>
                         <outlet property="imageView" destination="LjX-Nm-3qm" id="vso-aw-KIQ"/>
                         <outlet property="startButton" destination="qrd-gC-SqR" id="hdi-Cl-xUI"/>
+                        <outlet property="switchCameraButton" destination="Vwc-2v-uVu" id="caV-9M-30y"/>
                         <segue destination="Mxr-Wx-ZHu" kind="push" identifier="GoToFiltersSegue" id="lRU-BT-tUM"/>
                     </connections>
                 </viewController>

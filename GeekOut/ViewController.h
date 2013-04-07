@@ -26,5 +26,7 @@ using namespace cv;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
 - (IBAction)toggleVideoAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *switchCameraButton;
+- (IBAction)switchCameraAction:(id)sender;
 
 @end
