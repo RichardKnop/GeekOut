@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterCollectionController : UICollectionViewController
+@interface FilterCollectionController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+{
+    NSArray *filterImages;
+    NSArray *filterLabels;
+}
 
 @end

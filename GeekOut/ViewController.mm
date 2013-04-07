@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "FiltersController.h"
 
 @interface ViewController ()
 
