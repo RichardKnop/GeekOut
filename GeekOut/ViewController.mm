@@ -38,9 +38,13 @@
     self.videoCamera.grayscaleMode = NO;
 }
 
-- (void)filtersClicked
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [self performSegueWithIdentifier:@"GoToFiltersSegue" sender:self];
+    if (self.isStarted == YES) {
+        [self.videoCamera stop];
+        self.isStarted = NO;
+        self.startButton.title = @"Start";
+    }
 }
 
 #pragma mark - Protocol CvVideoCameraDelegate
@@ -84,6 +88,11 @@
 }
 
 #pragma mark - UI Actions
+
+- (void)filtersClicked
+{
+    [self performSegueWithIdentifier:@"GoToFiltersSegue" sender:self];
+}
 
 - (IBAction)toggleVideoAction:(id)sender;
 {
