@@ -59,4 +59,16 @@
     return filterCell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FilterCell *filterCell = (FilterCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    filterCell.backgroundColor = [UIColor darkGrayColor];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FilterCell *filterCell = (FilterCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    filterCell.backgroundColor = [UIColor blackColor];
+}
+
 @end

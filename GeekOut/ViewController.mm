@@ -22,7 +22,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.imageView.backgroundColor = [UIColor darkGrayColor];
     self.isStarted = NO;
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
@@ -37,13 +36,15 @@
     self.videoCamera.grayscaleMode = NO;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    // TODO
+    //NSLog([NSString stringWithFormat:@"%d", self.navigationController.selectedFilter]);
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if (self.isStarted == YES) {
-        [self.videoCamera stop];
-        self.isStarted = NO;
-        self.startButton.title = @"Start";
-    }
+    // TODO
 }
 
 #pragma mark - Protocol CvVideoCameraDelegate
