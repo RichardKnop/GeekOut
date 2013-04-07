@@ -15,6 +15,8 @@
 
 @implementation FilterCollectionController
 
+@synthesize changeVideoFilterDelegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,6 +33,8 @@
     
     filterImages = [[NSArray alloc] initWithObjects:@"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", nil];
     filterLabels = [[NSArray alloc] initWithObjects:@"Filter 1", @"Filter 2", @"Filter 3", @"Filter 4", @"Filter 5", @"Filter 6", @"Filter 7", @"Filter 8", @"Filter 9", nil];
+    
+    changeVideoFilterDelegate = [self.navigationController.viewControllers objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,6 +67,12 @@
 {
     FilterCell *filterCell = (FilterCell *)[collectionView cellForItemAtIndexPath:indexPath];
     filterCell.backgroundColor = [UIColor darkGrayColor];
+    
+    if ([changeVideoFilterDelegate respondsToSelector:@selector(changeVideoFilter:)])
+    {
+        // send the delegate function with the index of filter
+        [changeVideoFilterDelegate changeVideoFilter:indexPath.item];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -11,16 +11,18 @@
 #import <opencv2/highgui/cap_ios.h>
 #include "opencv2/imgproc/imgproc.hpp"
 using namespace cv;
+#import "FilterCollectionController.h"
 
-@interface ViewController : UIViewController<CvVideoCameraDelegate>
+@interface ViewController : UIViewController <CvVideoCameraDelegate, ChangeVideoFilterDelegate>
 {
-    CvVideoCamera* videoCamera;
+    CvVideoCamera *videoCamera;
     BOOL isStarted;
+    NSInteger videoFilter;
 }
 
 - (void)filtersClicked;
 
-@property (nonatomic, retain) CvVideoCamera* videoCamera;
+@property (nonatomic, retain) CvVideoCamera *videoCamera;
 @property (nonatomic, assign) BOOL isStarted;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -28,5 +30,8 @@ using namespace cv;
 - (IBAction)toggleVideoAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *switchCameraButton;
 - (IBAction)switchCameraAction:(id)sender;
+
+@property (nonatomic, assign) NSInteger videoFilter;
+- (void)changeVideoFilter:(NSInteger)filter;
 
 @end

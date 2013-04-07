@@ -16,6 +16,7 @@
 
 @synthesize videoCamera;
 @synthesize isStarted;
+@synthesize videoFilter;
 
 - (void)viewDidLoad
 {
@@ -36,10 +37,14 @@
     self.videoCamera.grayscaleMode = NO;
 }
 
+- (void)changeVideoFilter:(NSInteger)filter
+{
+    videoFilter = filter;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     // TODO
-    //NSLog([NSString stringWithFormat:@"%d", self.navigationController.selectedFilter]);
 }
 
 - (void)viewWillDisappear:(BOOL)animated

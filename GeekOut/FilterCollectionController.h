@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ChangeVideoFilterDelegate <NSObject>
+
+- (void)changeVideoFilter:(NSInteger)filter;
+
+@end
+
 @interface FilterCollectionController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     NSArray *filterImages;
     NSArray *filterLabels;
+    id <ChangeVideoFilterDelegate> changeVideoFilterDelegate;
 }
+
+@property (nonatomic, retain) id changeVideoFilterDelegate;
 
 @end
