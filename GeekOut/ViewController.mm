@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FilterCollectionController.h"
 
 @interface ViewController ()
 
@@ -23,18 +24,29 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.isStarted = NO;
+    isStarted = NO;
+    videoFilter = -1;
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
     self.navigationItem.rightBarButtonItem = filtersButton;
     
-    self.videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
-    self.videoCamera.delegate = self;
-    self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
-    self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-    self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
-    self.videoCamera.defaultFPS = 30;
-    self.videoCamera.grayscaleMode = NO;
+    videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
+    videoCamera.delegate = self;
+    videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+    videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+    videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
+    videoCamera.defaultFPS = 30;
+    videoCamera.grayscaleMode = NO;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"GoToFiltersSegue"])
+    {
+        FilterCollectionController *filterCollectionController = segue.destinationViewController;
+        filterCollectionController.changeVideoFilterDelegate = self;
+        filterCollectionController.selectedFilter = videoFilter;
+    }
 }
 
 - (void)changeVideoFilter:(NSInteger)filter
@@ -101,20 +113,20 @@
 
 - (IBAction)toggleVideoAction:(id)sender;
 {
-    if (self.isStarted == NO) {
-        [self.videoCamera start];
-        self.isStarted = YES;
+    if (isStarted == NO) {
+        [videoCamera start];
+        isStarted = YES;
         self.startButton.title = @"Stop";
     } else {
-        [self.videoCamera stop];
-        self.isStarted = NO;
+        [videoCamera stop];
+        isStarted = NO;
         self.startButton.title = @"Start";
     }
     
 }
 
 - (IBAction)switchCameraAction:(id)sender {
-    [self.videoCamera switchCameras];
+    [videoCamera switchCameras];
 }
 
 @end

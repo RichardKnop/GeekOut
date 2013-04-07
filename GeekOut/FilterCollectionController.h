@@ -19,8 +19,10 @@
     NSArray *filterImages;
     NSArray *filterLabels;
     id <ChangeVideoFilterDelegate> changeVideoFilterDelegate;
+    int selectedFilter;
 }
 
 @property (nonatomic, retain) id changeVideoFilterDelegate;
+@property (assign) int selectedFilter;
 
 @end

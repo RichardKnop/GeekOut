@@ -17,7 +17,7 @@ using namespace cv;
 {
     CvVideoCamera *videoCamera;
     BOOL isStarted;
-    NSInteger videoFilter;
+    int videoFilter;
 }
 
 - (void)filtersClicked;
@@ -31,7 +31,7 @@ using namespace cv;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *switchCameraButton;
 - (IBAction)switchCameraAction:(id)sender;
 
-@property (nonatomic, assign) NSInteger videoFilter;
+@property (assign) int videoFilter;
 - (void)changeVideoFilter:(NSInteger)filter;
 
 @end
