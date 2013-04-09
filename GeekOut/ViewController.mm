@@ -108,17 +108,8 @@
         cv::transform(image_copy, image, kern);
     } else if (2 == videoFilter) {
         // Contrast / brigtness adjustment
-//        Mat new_image = Mat::zeros( image.size(), image.type() );
-        image_copy.convertTo(image, -1, 1.3, 0.15);
-//        Mat kern = (Mat_<float>(4, 4) <<  1.9, 0, 0, 0,
-//                    0, 1.9, 0, 0,
-//                    0, 0, 1.9, 0,
-//                    0, 0, 0, 1.9);
-//        cv::transform(image_copy, image, kern);
-//        Mat kern = (Mat_<float>(3,3) <<  0, -1,  0,
-//                    -1,  5, -1,
-//                    0, -1,  0);
-//        filter2D(image_copy, image, image_copy.depth(), kern );
+        image_copy.convertTo(image_copy, -1, 1.3, 0.15);
+        cvtColor(image_copy, image, CV_BGR2BGRA);
     } else if (3 == videoFilter) {
 //        Mat kern = (Mat_<float>(3,3) <<  0, -1,  0,
 //                    -1,  5, -1,
