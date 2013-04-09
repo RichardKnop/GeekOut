@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90EA7161714B5970049C234 /* misc.txt in Resources */ = {isa = PBXBuildFile; fileRef = D90EA7151714B5970049C234 /* misc.txt */; };
+		D90EA71C1714B7FE0049C234 /* Filter.mm in Sources */ = {isa = PBXBuildFile; fileRef = D90EA71B1714B7FE0049C234 /* Filter.mm */; };
 		D9725C8A17108C060083290D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8917108C060083290D /* UIKit.framework */; };
 		D9725C8C17108C060083290D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8B17108C060083290D /* Foundation.framework */; };
 		D9725C8E17108C060083290D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8D17108C060083290D /* CoreGraphics.framework */; };
@@ -34,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D90EA7151714B5970049C234 /* misc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = misc.txt; sourceTree = "<group>"; };
+		D90EA71A1714B7FE0049C234 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		D90EA71B1714B7FE0049C234 /* Filter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Filter.mm; sourceTree = "<group>"; };
 		D9725C8617108C060083290D /* GeekOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9725C8917108C060083290D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D9725C8B17108C060083290D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,6 +146,9 @@
 				D978B6CC1711C9C300805433 /* FilterCell.mm */,
 				D978B6CE1711CAD500805433 /* FilterCollectionController.h */,
 				D978B6CF1711CAD500805433 /* FilterCollectionController.mm */,
+				D90EA7151714B5970049C234 /* misc.txt */,
+				D90EA71A1714B7FE0049C234 /* Filter.h */,
+				D90EA71B1714B7FE0049C234 /* Filter.mm */,
 				D9725C9017108C060083290D /* Supporting Files */,
 			);
 			path = GeekOut;
@@ -217,6 +225,7 @@
 				D9725CA017108C060083290D /* Default-568h@2x.png in Resources */,
 				D9725CA317108C060083290D /* MainStoryboard.storyboard in Resources */,
 				D978B6D21711D0E000805433 /* flower.png in Resources */,
+				D90EA7161714B5970049C234 /* misc.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +241,7 @@
 				D9725CA617108C060083290D /* ViewController.mm in Sources */,
 				D978B6CD1711C9C300805433 /* FilterCell.mm in Sources */,
 				D978B6D01711CAD500805433 /* FilterCollectionController.mm in Sources */,
+				D90EA71C1714B7FE0049C234 /* Filter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

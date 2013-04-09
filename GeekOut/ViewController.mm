@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "FilterCollectionController.h"
+#import "Filter.h"
 
 @interface ViewController ()
 
@@ -29,6 +30,8 @@
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
     self.navigationItem.rightBarButtonItem = filtersButton;
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+    [self.navigationController.toolbar setBarStyle:UIBarStyleDefault];
     
     videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
     videoCamera.delegate = self;
@@ -69,96 +72,8 @@
 #ifdef __cplusplus
 - (void)processImage:(Mat&)image;
 {
-    // Do some OpenCV stuff with the image
-    Mat image_copy;
-    cvtColor(image, image_copy, CV_BGRA2BGR);
-    
-    //        int erosion_size = 2;
-    //        cv::Mat element = cv::getStructuringElement(cv::MORPH_ELLIPSE,
-    //                                                    cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
-    //                                                    cv::Point(erosion_size, erosion_size) );
-    //        cv::erode(image_copy, image, element);
-    
-    //        int erosion_size = 2;
-    //        cv::Mat element = cv::getStructuringElement(cv::MORPH_ELLIPSE,
-    //                                                    cv::Size(2 * erosion_size + 1, 2 * erosion_size + 1),
-    //                                                    cv::Point(erosion_size, erosion_size) );
-    //        cv::dilate(image_copy, image, element);
-    
-//    Mat kern = (Mat_<float>(3,3) <<  0.8, 0, 0,
-//                0, 0.8, 0,
-//                0, 0, 0.8);
-//    cv::transform(image_copy, image, kern);
-    
-//    Mat kern = (Mat_<float>(4, 4) <<  1.9, 0, 0, 0,
-//                0, 1.9, 0, 0,
-//                0, 0, 1.9, 0,
-//                0, 0, 0, 1.9);
-//    cv::transform(image_copy, image, kern);
-    
-    if (0 == videoFilter) {
-        // Grey
-        cvtColor(image_copy, image, CV_BGR2GRAY);
-    } else if (1 == videoFilter) {
-        // Sepia
-        Mat kern = (Mat_<float>(4,4) <<  0.272, 0.534, 0.131, 0,
-                    0.349, 0.686, 0.168, 0,
-                    0.393, 0.769, 0.189, 0,
-                    0, 0, 0, 1);
-        cv::transform(image_copy, image, kern);
-    } else if (2 == videoFilter) {
-        // Contrast / brigtness adjustment
-        image_copy.convertTo(image_copy, -1, 1.3, 0.15);
-        cvtColor(image_copy, image, CV_BGR2BGRA);
-    } else if (3 == videoFilter) {
-//        Mat kern = (Mat_<float>(3,3) <<  0, -1,  0,
-//                    -1,  5, -1,
-//                    0, -1,  0);
-//        filter2D(image_copy, image, image_copy.depth(), kern );
-    } else if (4 == videoFilter) {
-//        Mat kern = (Mat_<float>(4,4) <<  2, 0, 0, 0,
-//                    0, 2, 0, 0,
-//                    0, 0, 2, 0,
-//                    0, 0, 0, 2);
-//        cv::transform(image_copy, image, kern);
-//        image += cv::Scalar(2, 2, 2, 0);
-    } else if (5 == videoFilter) {
-//        Mat kern = (Mat_<float>(4,4) <<  0.272, 0.534, 0.131, 0,
-//                    0.349, 0.686, 0.168, 0,
-//                    0.393, 0.769, 0.189, 0,
-//                    0, 0, 0, 1);
-//        cv::transform(image_copy, image, kern);
-    } else if (6 == videoFilter) {
-//        bitwise_not(image_copy, image_copy);
-//        cvtColor(image_copy, image, CV_BGR2BGRA);
-    } else if (7 == videoFilter) {
-//        cvtColor(image_copy, image, CV_BGR2GRAY);
-    } else if (8 == videoFilter) {
-//        cvtColor(image_copy, image, CV_BGR2Luv);
-    }
-    
-    // invert image
-    //bitwise_not(image_copy, image_copy);
-    //cvtColor(image_copy, image, CV_BGR2BGRA);
-    
-    // grey image
-    //cvtColor(image_copy, image, CV_BGR2GRAY);
-    
-    // binary image
-    //threshold(image_copy, image_copy, 20, 255, THRESH_BINARY);
-    //cvtColor(image_copy, image, CV_BGR2GRAY);
-    
-    // hsv image
-    //cvtColor(image_copy, image, CV_BGR2HSV);
-    
-    // luv image
-    //cvtColor(image_copy, image, CV_BGR2Luv);
-    
-    // hls image
-    //cvtColor(image_copy, image, CV_BGR2HLS);
-    
-    // lab image
-    //cvtColor(image_copy, image, CV_BGR2Lab);
+    Filter *filter = [[Filter alloc] init];
+    [filter applyFilter:image filter:self.videoFilter];
 }
 #endif
 
@@ -190,6 +105,11 @@
 }
 
 - (IBAction)switchCameraAction:(id)sender {
+    if ([self.switchCameraButton.title isEqualToString:@"Front Camera"]) {
+        self.switchCameraButton.title = @"Back Camera";
+    } else if ([self.switchCameraButton.title isEqualToString:@"Back Camera"]) {
+        self.switchCameraButton.title = @"Front Camera";
+    }
     [videoCamera switchCameras];
 }
 
