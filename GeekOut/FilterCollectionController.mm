@@ -40,8 +40,21 @@
     
     [self.navigationController.navigationItem setBackBarButtonItem:backButton];
     
-    filterImages = [[NSArray alloc] initWithObjects:@"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", nil];
     filterLabels = [[NSArray alloc] initWithObjects:@"Vignette", @"Sepia", @"Steel Blue", @"Terra Cotta", @"Olive", @"Byzantium", @"Amatorka", @"Miss Etikate", @"Soft Elegance", @"Sketch", @"Sketch 2", @"Toon", @"Smooth Toon", @"Emboss", @"Posterize", @"Tilt Shift", @"Sobel Edge", @"Canny Edge", nil];
+    
+    filterImages = [[NSMutableArray alloc] init];
+    for (NSString *filterLabel in filterLabels) {
+        UIImage *filterImage = [UIImage imageNamed:@"flower.png"];
+        
+        // apply filter
+        GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:filterImage];
+        GPUImageOutput<GPUImageInput> *stillImageFilter = [[[Filter alloc] init] getFilter:filterLabel];
+        [stillImageSource addTarget:stillImageFilter];
+        [stillImageSource processImage];
+        filterImage = [stillImageFilter imageFromCurrentlyProcessedOutput];
+        
+        [filterImages addObject:filterImage];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +77,7 @@
 {
     FilterCell *filterCell = (FilterCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"FilterCell" forIndexPath:indexPath];
     
-    filterCell.filterImage.image = [UIImage imageNamed:[filterImages objectAtIndex:indexPath.item]];
+    filterCell.filterImage.image = [filterImages objectAtIndex:indexPath.item];
     filterCell.filterImage.layer.cornerRadius = 10.0;
     filterCell.filterImage.layer.masksToBounds = YES;
     filterCell.filterLabel.text = [filterLabels objectAtIndex:indexPath.item];
@@ -72,13 +85,6 @@
         filterCell.filterImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
         filterCell.filterImage.layer.borderWidth = 2.0;
     }
-    
-    // apply filter
-    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:filterCell.filterImage.image];
-    GPUImageOutput<GPUImageInput> *stillImageFilter = [[[Filter alloc] init] getFilter:filterCell.filterLabel.text];
-    [stillImageSource addTarget:stillImageFilter];
-    [stillImageSource processImage];
-    filterCell.filterImage.image = [stillImageFilter imageFromCurrentlyProcessedOutput];
     
     return filterCell;
 }

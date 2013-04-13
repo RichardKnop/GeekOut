@@ -15,8 +15,8 @@
 
 @interface FilterCollectionController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 {
-    NSArray *filterImages;
     NSArray *filterLabels;
+    NSMutableArray *filterImages;
     id <ChangeVideoFilterDelegate> changeVideoFilterDelegate;
     NSString *selectedFilter;
 }

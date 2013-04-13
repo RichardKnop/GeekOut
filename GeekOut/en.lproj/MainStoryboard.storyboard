@@ -14,14 +14,14 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlr-zU-Wax">
                                 <items>
-                                    <barButtonItem title="Start" id="qrd-gC-SqR">
+                                    <barButtonItem image="button-play.png" id="qrd-gC-SqR">
                                         <connections>
                                             <action selector="toggleVideoAction:" destination="2" id="YK9-NS-fN8"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Front Camera" id="Vwc-2v-uVu">
+                                    <barButtonItem image="button-record.png" id="JoB-ln-V2B">
                                         <connections>
-                                            <action selector="switchCameraAction:" destination="2" id="lTO-4l-9iO"/>
+                                            <action selector="toggleRecordAction:" destination="2" id="vPz-EJ-NWd"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -37,8 +37,9 @@
                     <navigationItem key="navigationItem" id="xzV-06-ptV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="recordButton" destination="JoB-ln-V2B" id="qQI-Ow-ik4"/>
                         <outlet property="startButton" destination="qrd-gC-SqR" id="hdi-Cl-xUI"/>
-                        <outlet property="switchCameraButton" destination="Vwc-2v-uVu" id="caV-9M-30y"/>
+                        <outlet property="toolbar" destination="Vlr-zU-Wax" id="Tcd-Oo-1vL"/>
                         <segue destination="Psq-wZ-y87" kind="push" identifier="GoToFiltersSegue" id="EnW-rd-cma"/>
                     </connections>
                 </viewController>
@@ -130,6 +131,10 @@
             <point key="canvasLocation" x="12" y="-39"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button-play.png" width="30" height="30"/>
+        <image name="button-record.png" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

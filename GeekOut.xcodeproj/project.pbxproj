@@ -40,6 +40,10 @@
 		D98F320C1719B959006EF1F5 /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */; };
 		D98F320D1719B959006EF1F5 /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */; };
 		D98F320E1719B959006EF1F5 /* lookup.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32091719B959006EF1F5 /* lookup.png */; };
+		D9EAE0541719F38300741504 /* button-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0501719F38300741504 /* button-pause.png */; };
+		D9EAE0551719F38300741504 /* button-play.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0511719F38300741504 /* button-play.png */; };
+		D9EAE0561719F38300741504 /* button-record.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0521719F38300741504 /* button-record.png */; };
+		D9EAE0571719F38300741504 /* button-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0531719F38300741504 /* button-stop.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +112,10 @@
 		D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_1.png; path = ../../GPUImage/framework/Resources/lookup_soft_elegance_1.png; sourceTree = "<group>"; };
 		D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_2.png; path = ../../GPUImage/framework/Resources/lookup_soft_elegance_2.png; sourceTree = "<group>"; };
 		D98F32091719B959006EF1F5 /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup.png; path = ../../GPUImage/framework/Resources/lookup.png; sourceTree = "<group>"; };
+		D9EAE0501719F38300741504 /* button-pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-pause.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-pause.png"; sourceTree = "<group>"; };
+		D9EAE0511719F38300741504 /* button-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-play.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-play.png"; sourceTree = "<group>"; };
+		D9EAE0521719F38300741504 /* button-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-record.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-record.png"; sourceTree = "<group>"; };
+		D9EAE0531719F38300741504 /* button-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-stop.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-stop.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +216,10 @@
 		D9725C9017108C060083290D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9EAE0501719F38300741504 /* button-pause.png */,
+				D9EAE0511719F38300741504 /* button-play.png */,
+				D9EAE0521719F38300741504 /* button-record.png */,
+				D9EAE0531719F38300741504 /* button-stop.png */,
 				D98F32051719B959006EF1F5 /* lookup_amatorka.png */,
 				D98F32061719B959006EF1F5 /* lookup_miss_etikate.png */,
 				D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */,
@@ -311,6 +323,10 @@
 				D98F320C1719B959006EF1F5 /* lookup_soft_elegance_1.png in Resources */,
 				D98F320D1719B959006EF1F5 /* lookup_soft_elegance_2.png in Resources */,
 				D98F320E1719B959006EF1F5 /* lookup.png in Resources */,
+				D9EAE0541719F38300741504 /* button-pause.png in Resources */,
+				D9EAE0551719F38300741504 /* button-play.png in Resources */,
+				D9EAE0561719F38300741504 /* button-record.png in Resources */,
+				D9EAE0571719F38300741504 /* button-stop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
