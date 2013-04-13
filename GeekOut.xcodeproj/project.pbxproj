@@ -138,7 +138,6 @@
 		D9725C7D17108C060083290D = {
 			isa = PBXGroup;
 			children = (
-				D9473D22171962C9000BABE2 /* OpenGLES.framework */,
 				D9725C8F17108C060083290D /* GeekOut */,
 				D9725C8817108C060083290D /* Frameworks */,
 				D9725C8717108C060083290D /* Products */,
@@ -163,6 +162,7 @@
 				D9725CC01710A4310083290D /* AssetsLibrary.framework */,
 				D9725CBE1710A4250083290D /* Accelerate.framework */,
 				D9725CB417108D6E0083290D /* libz.dylib */,
+				D9473D22171962C9000BABE2 /* OpenGLES.framework */,
 				D9725CB217108D5D0083290D /* CoreMedia.framework */,
 				D9725CB017108D580083290D /* CoreVideo.framework */,
 				D9725CAE17108D4B0083290D /* ImageIO.framework */,
