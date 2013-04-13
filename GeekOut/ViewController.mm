@@ -33,13 +33,25 @@
     [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
     [self.navigationController.toolbar setBarStyle:UIBarStyleDefault];
     
-    videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
-    videoCamera.delegate = self;
-    videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-    videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-    videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
-    videoCamera.defaultFPS = 30;
-    videoCamera.grayscaleMode = NO;
+//    videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
+//    videoCamera.delegate = self;
+//    videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+//    videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+//    videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
+//    videoCamera.defaultFPS = 30;
+//    videoCamera.grayscaleMode = NO;
+    GPUImageVideoCamera *videoCamera2 = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+    videoCamera2.outputImageOrientation = UIInterfaceOrientationPortrait;
+    
+    GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
+    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200, 200)];
+    
+    // Add the view somewhere so it's visible
+    
+    [videoCamera2 addTarget:customFilter];
+    [customFilter addTarget:filteredVideoView];
+    
+    [videoCamera2 startCameraCapture];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

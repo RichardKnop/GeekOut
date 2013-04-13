@@ -11,6 +11,7 @@
 #import <opencv2/highgui/cap_ios.h>
 #include "opencv2/imgproc/imgproc.hpp"
 using namespace cv;
+#import "GPUImage.h"
 #import "FilterCollectionController.h"
 
 @interface ViewController : UIViewController <CvVideoCameraDelegate, ChangeVideoFilterDelegate>

@@ -409,6 +409,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeekOut/GeekOut-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Users/richardknop/Projects/OpenCV-iOS/opencv2.framework/Headers/";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/Users/richardknop/Projects/OpenCV-iOS/opencv2.framework/Headers/",
+					/Users/richardknop/Projects/GPUImage/framework/Source/,
+				);
 				INFOPLIST_FILE = "GeekOut/GeekOut-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,6 +433,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GeekOut/GeekOut-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Users/richardknop/Projects/OpenCV-iOS/opencv2.framework/Headers/";
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"/Users/richardknop/Projects/OpenCV-iOS/opencv2.framework/Headers/",
+					/Users/richardknop/Projects/GPUImage/framework/Source/,
+				);
 				INFOPLIST_FILE = "GeekOut/GeekOut-Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
