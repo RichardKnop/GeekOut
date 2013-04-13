@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D90EA7161714B5970049C234 /* misc.txt in Resources */ = {isa = PBXBuildFile; fileRef = D90EA7151714B5970049C234 /* misc.txt */; };
 		D90EA71C1714B7FE0049C234 /* Filter.mm in Sources */ = {isa = PBXBuildFile; fileRef = D90EA71B1714B7FE0049C234 /* Filter.mm */; };
+		D9473D211719629C000BABE2 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9473D1C1719619D000BABE2 /* libGPUImage.a */; };
+		D9473D23171962C9000BABE2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9473D22171962C9000BABE2 /* OpenGLES.framework */; };
 		D9725C8A17108C060083290D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8917108C060083290D /* UIKit.framework */; };
 		D9725C8C17108C060083290D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8B17108C060083290D /* Foundation.framework */; };
 		D9725C8E17108C060083290D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8D17108C060083290D /* CoreGraphics.framework */; };
@@ -35,10 +37,36 @@
 		D978B6D21711D0E000805433 /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = D978B6D11711D0E000805433 /* flower.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D9473D1B1719619D000BABE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9473D151719619D000BABE2 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		D9473D1D1719619D000BABE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9473D151719619D000BABE2 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
+		D9473D1F171961E8000BABE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9473D151719619D000BABE2 /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D90EA7151714B5970049C234 /* misc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = misc.txt; sourceTree = "<group>"; };
 		D90EA71A1714B7FE0049C234 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		D90EA71B1714B7FE0049C234 /* Filter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Filter.mm; sourceTree = "<group>"; };
+		D9473D151719619D000BABE2 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		D9473D22171962C9000BABE2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D9725C8617108C060083290D /* GeekOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9725C8917108C060083290D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D9725C8B17108C060083290D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9473D23171962C9000BABE2 /* OpenGLES.framework in Frameworks */,
 				D9725CC91710A58A0083290D /* opencv2.framework in Frameworks */,
 				D9725CC51710A44F0083290D /* QuartzCore.framework in Frameworks */,
 				D9725CC31710A4450083290D /* CoreImage.framework in Frameworks */,
@@ -90,15 +119,26 @@
 				D9725C8A17108C060083290D /* UIKit.framework in Frameworks */,
 				D9725C8C17108C060083290D /* Foundation.framework in Frameworks */,
 				D9725C8E17108C060083290D /* CoreGraphics.framework in Frameworks */,
+				D9473D211719629C000BABE2 /* libGPUImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D9473D161719619D000BABE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9473D1C1719619D000BABE2 /* libGPUImage.a */,
+				D9473D1E1719619D000BABE2 /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D9725C7D17108C060083290D = {
 			isa = PBXGroup;
 			children = (
+				D9473D22171962C9000BABE2 /* OpenGLES.framework */,
 				D9725C8F17108C060083290D /* GeekOut */,
 				D9725C8817108C060083290D /* Frameworks */,
 				D9725C8717108C060083290D /* Products */,
@@ -116,6 +156,7 @@
 		D9725C8817108C060083290D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9473D151719619D000BABE2 /* GPUImage.xcodeproj */,
 				D9725CC81710A58A0083290D /* opencv2.framework */,
 				D9725CC41710A44F0083290D /* QuartzCore.framework */,
 				D9725CC21710A4450083290D /* CoreImage.framework */,
@@ -182,6 +223,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D9473D20171961E8000BABE2 /* PBXTargetDependency */,
 			);
 			name = GeekOut;
 			productName = GeekOut;
@@ -207,12 +249,35 @@
 			mainGroup = D9725C7D17108C060083290D;
 			productRefGroup = D9725C8717108C060083290D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D9473D161719619D000BABE2 /* Products */;
+					ProjectRef = D9473D151719619D000BABE2 /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D9725C8517108C060083290D /* GeekOut */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D9473D1C1719619D000BABE2 /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = D9473D1B1719619D000BABE2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9473D1E1719619D000BABE2 /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = D9473D1D1719619D000BABE2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D9725C8417108C060083290D /* Resources */ = {
@@ -246,6 +311,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9473D20171961E8000BABE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = D9473D1F171961E8000BABE2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D9725C9217108C060083290D /* InfoPlist.strings */ = {
