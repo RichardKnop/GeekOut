@@ -129,7 +129,7 @@
 }
 
 - (IBAction)toggleRecordAction:(id)sender {
-    if (isRecording == NO) {
+    if (isRecording == NO && isStarted == YES) {
         isRecording = YES;
         self.recordButton.image = [UIImage imageNamed:@"button-stop.png"];
         
@@ -151,7 +151,7 @@
             [videoCameraFilter removeTarget:movieWriter];
             [movieWriter finishRecording];
         }];
-    } else {
+    } else if (isRecording == YES) {
         isRecording = NO;
         self.recordButton.image = [UIImage imageNamed:@"button-record.png"];
         [movieWriter completionBlock];

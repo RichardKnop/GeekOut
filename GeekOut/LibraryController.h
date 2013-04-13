@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface LibraryController : UITableViewController
 {
@@ -14,5 +15,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray *libraryFiles;
+
+- (UIImage*) thumbnailImageForVideo:(NSURL *)sourceURL;
 
 @end

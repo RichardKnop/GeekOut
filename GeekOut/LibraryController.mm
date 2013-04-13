@@ -73,7 +73,8 @@
     LibraryCell *libraryCell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
     
     libraryCell.itemLabel.text = @"TODO";
-    libraryCell.itemImage.backgroundColor = [UIColor redColor];
+    NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:indexPath.item]];
+    libraryCell.itemImage.image = [self thumbnailImageForVideo:[NSURL URLWithString:videoPath]];
     
     return libraryCell;
 }
@@ -133,6 +134,19 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (UIImage*) thumbnailImageForVideo:(NSURL *)sourceURL
+{
+    AVAsset *asset = [AVAsset assetWithURL:sourceURL];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    NSError *err = NULL;
+    CMTime time = CMTimeMake(1, 1);
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:&err];
+    NSLog(@"err==%@, imageRef==%@", err, imageRef);
+    UIImage *thumbnail = [[UIImage alloc] initWithCGImage:imageRef];
+    CGImageRelease(imageRef); // CGImageRef won't be released by ARC
+    return thumbnail;
 }
 
 @end
