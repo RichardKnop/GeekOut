@@ -16,7 +16,7 @@
     GPUImageVideoCamera *videoCamera;
     GPUImageOutput<GPUImageInput> *videoCameraFilter;
     BOOL isStarted;
-    int selectedFilter;
+    NSString *selectedFilter;
 }
 
 - (void)filtersClicked;
@@ -25,8 +25,8 @@
 @property (nonatomic, retain) GPUImageOutput<GPUImageInput> *videoCameraFilter;
 
 @property (nonatomic, assign) BOOL isStarted;
-@property (assign) int selectedFilter;
-- (void)changeVideoFilter:(NSInteger)filter;
+@property (nonatomic, retain) NSString *selectedFilter;
+- (void)changeVideoFilter:(NSString *)filter;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
 - (IBAction)toggleVideoAction:(id)sender;

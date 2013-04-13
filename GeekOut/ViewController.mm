@@ -27,7 +27,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     isStarted = NO;
-    selectedFilter = -1;
+    selectedFilter = @"None";
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
     self.navigationItem.rightBarButtonItem = filtersButton;
@@ -53,7 +53,7 @@
     }
 }
 
-- (void)changeVideoFilter:(NSInteger)filter
+- (void)changeVideoFilter:(NSString *)filter
 {
     selectedFilter = filter;
     [videoCamera removeAllTargets];

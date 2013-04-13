@@ -35,6 +35,11 @@
 		D978B6CD1711C9C300805433 /* FilterCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = D978B6CC1711C9C300805433 /* FilterCell.mm */; };
 		D978B6D01711CAD500805433 /* FilterCollectionController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D978B6CF1711CAD500805433 /* FilterCollectionController.mm */; };
 		D978B6D21711D0E000805433 /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = D978B6D11711D0E000805433 /* flower.png */; };
+		D98F320A1719B959006EF1F5 /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32051719B959006EF1F5 /* lookup_amatorka.png */; };
+		D98F320B1719B959006EF1F5 /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32061719B959006EF1F5 /* lookup_miss_etikate.png */; };
+		D98F320C1719B959006EF1F5 /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */; };
+		D98F320D1719B959006EF1F5 /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */; };
+		D98F320E1719B959006EF1F5 /* lookup.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32091719B959006EF1F5 /* lookup.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +103,11 @@
 		D978B6CE1711CAD500805433 /* FilterCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCollectionController.h; sourceTree = "<group>"; };
 		D978B6CF1711CAD500805433 /* FilterCollectionController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FilterCollectionController.mm; sourceTree = "<group>"; };
 		D978B6D11711D0E000805433 /* flower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flower.png; sourceTree = "<group>"; };
+		D98F32051719B959006EF1F5 /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_amatorka.png; path = ../../GPUImage/framework/Resources/lookup_amatorka.png; sourceTree = "<group>"; };
+		D98F32061719B959006EF1F5 /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_miss_etikate.png; path = ../../GPUImage/framework/Resources/lookup_miss_etikate.png; sourceTree = "<group>"; };
+		D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_1.png; path = ../../GPUImage/framework/Resources/lookup_soft_elegance_1.png; sourceTree = "<group>"; };
+		D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_2.png; path = ../../GPUImage/framework/Resources/lookup_soft_elegance_2.png; sourceTree = "<group>"; };
+		D98F32091719B959006EF1F5 /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup.png; path = ../../GPUImage/framework/Resources/lookup.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +208,11 @@
 		D9725C9017108C060083290D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D98F32051719B959006EF1F5 /* lookup_amatorka.png */,
+				D98F32061719B959006EF1F5 /* lookup_miss_etikate.png */,
+				D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */,
+				D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */,
+				D98F32091719B959006EF1F5 /* lookup.png */,
 				D9725C9117108C060083290D /* GeekOut-Info.plist */,
 				D9725C9217108C060083290D /* InfoPlist.strings */,
 				D9725C9517108C060083290D /* main.mm */,
@@ -291,6 +306,11 @@
 				D9725CA317108C060083290D /* MainStoryboard.storyboard in Resources */,
 				D978B6D21711D0E000805433 /* flower.png in Resources */,
 				D90EA7161714B5970049C234 /* misc.txt in Resources */,
+				D98F320A1719B959006EF1F5 /* lookup_amatorka.png in Resources */,
+				D98F320B1719B959006EF1F5 /* lookup_miss_etikate.png in Resources */,
+				D98F320C1719B959006EF1F5 /* lookup_soft_elegance_1.png in Resources */,
+				D98F320D1719B959006EF1F5 /* lookup_soft_elegance_2.png in Resources */,
+				D98F320E1719B959006EF1F5 /* lookup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

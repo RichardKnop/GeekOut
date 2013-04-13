@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol ChangeVideoFilterDelegate <NSObject>
-- (void)changeVideoFilter:(NSInteger)filter;
+- (void)changeVideoFilter:(NSString *)filter;
 
 @end
 
@@ -18,10 +18,10 @@
     NSArray *filterImages;
     NSArray *filterLabels;
     id <ChangeVideoFilterDelegate> changeVideoFilterDelegate;
-    int selectedFilter;
+    NSString *selectedFilter;
 }
 
 @property (nonatomic, retain) id changeVideoFilterDelegate;
-@property (assign) int selectedFilter;
+@property (nonatomic, retain) NSString *selectedFilter;
 
 @end

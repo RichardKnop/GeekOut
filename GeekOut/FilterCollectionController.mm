@@ -40,8 +40,8 @@
     
     [self.navigationController.navigationItem setBackBarButtonItem:backButton];
     
-    filterImages = [[NSArray alloc] initWithObjects:@"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", nil];
-    filterLabels = [[NSArray alloc] initWithObjects:@"Sepia", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", nil];
+    filterImages = [[NSArray alloc] initWithObjects:@"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", nil];
+    filterLabels = [[NSArray alloc] initWithObjects:@"Vignette", @"Sepia", @"Steel Blue", @"Terra Cotta", @"Olive", @"Byzantium", @"Amatorka", @"Miss Etikate", @"Soft Elegance", @"Sketch", @"Sketch 2", @"Toon", @"Smooth Toon", @"Emboss", @"Posterize", @"Tilt Shift", @"Sobel Edge", @"Canny Edge", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,14 +68,14 @@
     filterCell.filterImage.layer.cornerRadius = 10.0;
     filterCell.filterImage.layer.masksToBounds = YES;
     filterCell.filterLabel.text = [filterLabels objectAtIndex:indexPath.item];
-    if (selectedFilter == indexPath.item) {
+    if ([selectedFilter isEqualToString:filterCell.filterLabel.text]) {
         filterCell.filterImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
         filterCell.filterImage.layer.borderWidth = 2.0;
     }
     
     // apply filter
     GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:filterCell.filterImage.image];
-    GPUImageOutput<GPUImageInput> *stillImageFilter = [[[Filter alloc] init] getFilter:indexPath.item];
+    GPUImageOutput<GPUImageInput> *stillImageFilter = [[[Filter alloc] init] getFilter:filterCell.filterLabel.text];
     [stillImageSource addTarget:stillImageFilter];
     [stillImageSource processImage];
     filterCell.filterImage.image = [stillImageFilter imageFromCurrentlyProcessedOutput];
@@ -97,7 +97,7 @@
     
     if ([changeVideoFilterDelegate respondsToSelector:@selector(changeVideoFilter:)])
     {
-        self.selectedFilter = indexPath.item;
+        self.selectedFilter = filterCell.filterLabel.text;
         
         // send the delegate function with the index of filter
         [changeVideoFilterDelegate changeVideoFilter:self.selectedFilter];

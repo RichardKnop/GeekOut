@@ -11,6 +11,6 @@
 
 @interface Filter : NSObject
 
-- (GPUImageOutput<GPUImageInput> *)getFilter:(int)filter;
+- (GPUImageOutput<GPUImageInput> *)getFilter:(NSString *)filterName;
 
 @end
