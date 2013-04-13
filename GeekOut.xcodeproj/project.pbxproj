@@ -44,6 +44,8 @@
 		D9EAE0551719F38300741504 /* button-play.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0511719F38300741504 /* button-play.png */; };
 		D9EAE0561719F38300741504 /* button-record.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0521719F38300741504 /* button-record.png */; };
 		D9EAE0571719F38300741504 /* button-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0531719F38300741504 /* button-stop.png */; };
+		D9EAE05E171A08CF00741504 /* LibraryController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9EAE05D171A08CE00741504 /* LibraryController.mm */; };
+		D9EAE061171A093000741504 /* LibraryCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9EAE060171A093000741504 /* LibraryCell.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,10 @@
 		D9EAE0511719F38300741504 /* button-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-play.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-play.png"; sourceTree = "<group>"; };
 		D9EAE0521719F38300741504 /* button-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-record.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-record.png"; sourceTree = "<group>"; };
 		D9EAE0531719F38300741504 /* button-stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-stop.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/button-stop.png"; sourceTree = "<group>"; };
+		D9EAE05C171A08CE00741504 /* LibraryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryController.h; sourceTree = "<group>"; };
+		D9EAE05D171A08CE00741504 /* LibraryController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryController.mm; sourceTree = "<group>"; };
+		D9EAE05F171A093000741504 /* LibraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
+		D9EAE060171A093000741504 /* LibraryCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryCell.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,10 @@
 				D978B6CC1711C9C300805433 /* FilterCell.mm */,
 				D978B6CE1711CAD500805433 /* FilterCollectionController.h */,
 				D978B6CF1711CAD500805433 /* FilterCollectionController.mm */,
+				D9EAE05F171A093000741504 /* LibraryCell.h */,
+				D9EAE060171A093000741504 /* LibraryCell.mm */,
+				D9EAE05C171A08CE00741504 /* LibraryController.h */,
+				D9EAE05D171A08CE00741504 /* LibraryController.mm */,
 				D90EA7151714B5970049C234 /* misc.txt */,
 				D90EA71A1714B7FE0049C234 /* Filter.h */,
 				D90EA71B1714B7FE0049C234 /* Filter.mm */,
@@ -343,6 +353,8 @@
 				D978B6CD1711C9C300805433 /* FilterCell.mm in Sources */,
 				D978B6D01711CAD500805433 /* FilterCollectionController.mm in Sources */,
 				D90EA71C1714B7FE0049C234 /* Filter.mm in Sources */,
+				D9EAE05E171A08CF00741504 /* LibraryController.mm in Sources */,
+				D9EAE061171A093000741504 /* LibraryCell.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

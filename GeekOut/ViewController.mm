@@ -58,7 +58,7 @@
     NSString *extension = @"m4v";
     recordingDestination = [NSString stringWithFormat: @"%@/%@.%@", destinationFolder, [dateFormat stringFromDate:date], extension];
     
-    [self listFileAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];
+//    [self listFileAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -112,7 +112,7 @@
 
 - (void)libraryClicked
 {
-    NSLog(@"hello");
+    [self performSegueWithIdentifier:@"GoToLibrarySegue" sender:self];
 }
 
 - (IBAction)toggleVideoAction:(id)sender;
