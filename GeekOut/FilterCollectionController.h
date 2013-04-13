@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @protocol ChangeVideoFilterDelegate <NSObject>
-
 - (void)changeVideoFilter:(NSInteger)filter;
 
 @end

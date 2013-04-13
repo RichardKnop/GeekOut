@@ -8,7 +8,6 @@
 
 #import "FilterCollectionController.h"
 #import "FilterCell.h"
-#import <QuartzCore/QuartzCore.h>
 #import "Filter.h"
 
 @interface FilterCollectionController ()
@@ -42,7 +41,7 @@
     [self.navigationController.navigationItem setBackBarButtonItem:backButton];
     
     filterImages = [[NSArray alloc] initWithObjects:@"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", @"flower.png", nil];
-    filterLabels = [[NSArray alloc] initWithObjects:@"Grey", @"Sepia", @"Bright", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", nil];
+    filterLabels = [[NSArray alloc] initWithObjects:@"Sepia", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", @"TODO", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,10 +74,11 @@
     }
     
     // apply filter
-    Filter *filter = [[Filter alloc] init];
-    Mat image = [filter cvMatFromUIImage:filterCell.filterImage.image];
-    [filter applyFilter:image filter:indexPath.item];
-    filterCell.filterImage.image = [filter UIImageFromCVMat:image];
+    GPUImagePicture *stillImageSource = [[GPUImagePicture alloc] initWithImage:filterCell.filterImage.image];
+    GPUImageOutput<GPUImageInput> *stillImageFilter = [[[Filter alloc] init] getFilter:indexPath.item];
+    [stillImageSource addTarget:stillImageFilter];
+    [stillImageSource processImage];
+    filterCell.filterImage.image = [stillImageFilter imageFromCurrentlyProcessedOutput];
     
     return filterCell;
 }

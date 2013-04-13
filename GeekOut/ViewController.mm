@@ -17,8 +17,9 @@
 @implementation ViewController
 
 @synthesize videoCamera;
+@synthesize videoCameraFilter;
 @synthesize isStarted;
-@synthesize videoFilter;
+@synthesize selectedFilter;
 
 - (void)viewDidLoad
 {
@@ -26,32 +27,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     isStarted = NO;
-    videoFilter = -1;
+    selectedFilter = -1;
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
     self.navigationItem.rightBarButtonItem = filtersButton;
     [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
     [self.navigationController.toolbar setBarStyle:UIBarStyleDefault];
     
-//    videoCamera = [[CvVideoCamera alloc] initWithParentView:self.imageView];
-//    videoCamera.delegate = self;
-//    videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-//    videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
-//    videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
-//    videoCamera.defaultFPS = 30;
-//    videoCamera.grayscaleMode = NO;
-    GPUImageVideoCamera *videoCamera2 = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-    videoCamera2.outputImageOrientation = UIInterfaceOrientationPortrait;
+    videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
     
-    GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
-    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200, 200)];
+    videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    videoCamera.horizontallyMirrorFrontFacingCamera = NO;
+    videoCamera.horizontallyMirrorRearFacingCamera = NO;
     
-    // Add the view somewhere so it's visible
-    
-    [videoCamera2 addTarget:customFilter];
-    [customFilter addTarget:filteredVideoView];
-    
-    [videoCamera2 startCameraCapture];
+    [self changeVideoFilter:selectedFilter];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -60,13 +49,24 @@
     {
         FilterCollectionController *filterCollectionController = segue.destinationViewController;
         filterCollectionController.changeVideoFilterDelegate = self;
-        filterCollectionController.selectedFilter = videoFilter;
+        filterCollectionController.selectedFilter = selectedFilter;
     }
 }
 
 - (void)changeVideoFilter:(NSInteger)filter
 {
-    videoFilter = filter;
+    selectedFilter = filter;
+    [videoCamera removeAllTargets];
+    [videoCameraFilter removeAllTargets];
+    videoCameraFilter = [[[Filter alloc] init] getFilter:selectedFilter];
+    [videoCamera addTarget:videoCameraFilter];
+    
+    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 372)];
+    [self.view addSubview:filteredVideoView];
+    
+    [videoCameraFilter addTarget:filteredVideoView];
+    filteredVideoView.fillMode = kGPUImageFillModeStretch;
+    [videoCameraFilter prepareForImageCapture];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,16 +78,6 @@
 {
     // TODO
 }
-
-#pragma mark - Protocol CvVideoCameraDelegate
-
-#ifdef __cplusplus
-- (void)processImage:(Mat&)image;
-{
-    Filter *filter = [[Filter alloc] init];
-    [filter applyFilter:image filter:self.videoFilter];
-}
-#endif
 
 - (void)didReceiveMemoryWarning
 {
@@ -105,13 +95,13 @@
 - (IBAction)toggleVideoAction:(id)sender;
 {
     if (isStarted == NO) {
-        [videoCamera start];
         isStarted = YES;
         self.startButton.title = @"Stop";
+        [videoCamera startCameraCapture];
     } else {
-        [videoCamera stop];
         isStarted = NO;
         self.startButton.title = @"Start";
+        [videoCamera stopCameraCapture];
     }
     
 }
@@ -122,7 +112,7 @@
     } else if ([self.switchCameraButton.title isEqualToString:@"Back Camera"]) {
         self.switchCameraButton.title = @"Front Camera";
     }
-    [videoCamera switchCameras];
+    [videoCamera rotateCamera];
 }
 
 @end

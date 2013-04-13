@@ -8,31 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
-#import <opencv2/highgui/cap_ios.h>
-#include "opencv2/imgproc/imgproc.hpp"
-using namespace cv;
 #import "GPUImage.h"
 #import "FilterCollectionController.h"
 
-@interface ViewController : UIViewController <CvVideoCameraDelegate, ChangeVideoFilterDelegate>
+@interface ViewController : UIViewController <ChangeVideoFilterDelegate>
 {
-    CvVideoCamera *videoCamera;
+    GPUImageVideoCamera *videoCamera;
+    GPUImageOutput<GPUImageInput> *videoCameraFilter;
     BOOL isStarted;
-    int videoFilter;
+    int selectedFilter;
 }
 
 - (void)filtersClicked;
 
-@property (nonatomic, retain) CvVideoCamera *videoCamera;
-@property (nonatomic, assign) BOOL isStarted;
+@property (nonatomic, retain) GPUImageVideoCamera *videoCamera;
+@property (nonatomic, retain) GPUImageOutput<GPUImageInput> *videoCameraFilter;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (nonatomic, assign) BOOL isStarted;
+@property (assign) int selectedFilter;
+- (void)changeVideoFilter:(NSInteger)filter;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *startButton;
 - (IBAction)toggleVideoAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *switchCameraButton;
 - (IBAction)switchCameraAction:(id)sender;
-
-@property (assign) int videoFilter;
-- (void)changeVideoFilter:(NSInteger)filter;
 
 @end
