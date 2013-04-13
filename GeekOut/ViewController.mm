@@ -37,6 +37,10 @@
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
     self.navigationItem.rightBarButtonItem = filtersButton;
+    
+    UIBarButtonItem *libraryButton = [[UIBarButtonItem alloc] initWithTitle:@"Library" style:UIBarButtonItemStyleBordered target:self action:@selector(libraryClicked)];
+    self.navigationItem.leftBarButtonItem = libraryButton;
+    
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     [toolbar setBarStyle:UIBarStyleBlackOpaque];
     
@@ -49,8 +53,12 @@
     
     NSDate *date = [NSDate date];
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"Documents/yyyy_MM_dd_HH_mm_ss.m4v"];
-    recordingDestination = [dateFormat stringFromDate:date];
+    [dateFormat setDateFormat:@"yyyy-MM-dd-HH-mm-SS"];
+    NSString *destinationFolder = @"Documents";
+    NSString *extension = @"m4v";
+    recordingDestination = [NSString stringWithFormat: @"%@/%@.%@", destinationFolder, [dateFormat stringFromDate:date], extension];
+    
+    [self listFileAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -102,6 +110,11 @@
     [self performSegueWithIdentifier:@"GoToFiltersSegue" sender:self];
 }
 
+- (void)libraryClicked
+{
+    NSLog(@"hello");
+}
+
 - (IBAction)toggleVideoAction:(id)sender;
 {
     if (isStarted == NO) {
@@ -131,19 +144,33 @@
         movieFile.audioEncodingTarget = movieWriter;
         [movieFile enableSynchronizedEncodingUsingMovieWriter:movieWriter];
         
-//        [movieWriter startRecording];
-//        [movieFile startProcessing];
-//        
-//        [movieWriter setCompletionBlock:^{
-//            [videoCameraFilter removeTarget:movieWriter];
-//            [movieWriter finishRecording];
-//        }];
+        [movieWriter startRecording];
+        [movieFile startProcessing];
+        
+        [movieWriter setCompletionBlock:^{
+            [videoCameraFilter removeTarget:movieWriter];
+            [movieWriter finishRecording];
+        }];
     } else {
         isRecording = NO;
         self.recordButton.image = [UIImage imageNamed:@"button-record.png"];
-        [videoCameraFilter removeTarget:movieWriter];
-        [movieWriter finishRecording];
+        [movieWriter completionBlock];
     }
+}
+
+- (NSArray *)listFileAtPath:(NSString *)path
+{
+    //-----> LIST ALL FILES <-----//
+    NSLog(@"LISTING ALL FILES FOUND");
+    
+    int count;
+    
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    for (count = 0; count < (int)[directoryContent count]; count++)
+    {
+        NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+    }
+    return directoryContent;
 }
 
 @end

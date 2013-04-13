@@ -45,4 +45,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *recordButton;
 - (IBAction)toggleRecordAction:(id)sender;
 
+- (NSArray *)listFileAtPath:(NSString *)path;
+
 @end
