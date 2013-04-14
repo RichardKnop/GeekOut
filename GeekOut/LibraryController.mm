@@ -236,18 +236,30 @@
 
 - (void)playVideo
 {
-//    NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:selectedCell]];
-//    NSURL *url=[[NSURL alloc] initWithString:videoPath];
-//    MPMoviePlayerController *moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:url];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDonePressed:) name:MPMoviePlayerDidExitFullscreenNotification object:moviePlayer];
-//    
-//    moviePlayer.controlStyle=MPMovieControlStyleDefault;
-//    //moviePlayer.shouldAutoplay=NO;
-//    [moviePlayer play];
-//    [self.view addSubview:moviePlayer.view];
-//    [moviePlayer setFullscreen:YES animated:YES];
+    if (-1 != selectedCell) {
+        NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:selectedCell]];
+        NSLog(videoPath);
+        NSURL *url=[[NSURL alloc] initWithString:videoPath];
+        MPMoviePlayerController *moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:url];
+    
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDonePressed) name:MPMoviePlayerDidExitFullscreenNotification object:moviePlayer];
+    
+        moviePlayer.controlStyle=MPMovieControlStyleDefault;
+        [moviePlayer play];
+        [self.view addSubview:moviePlayer.view];
+        [moviePlayer setFullscreen:YES animated:YES];
+    }
+}
+
+- (void)moviePlayBackDidFinish
+{
+    NSLog(@"aaa");
+}
+
+- (void)moviePlayBackDonePressed
+{
+    NSLog(@"bbb");
 }
 
 - (void)removeVideo
@@ -255,9 +267,11 @@
     if (-1 != selectedCell) {
         NSString *pathToMovie = [NSString stringWithFormat: @"%@/%@/%@", NSHomeDirectory() , @"Documents", [libraryFiles objectAtIndex:selectedCell]];
         [libraryFiles removeObjectAtIndex:selectedCell];
+        [thumbnails removeObjectAtIndex:selectedCell];
         [durations removeObjectAtIndex:selectedCell];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:selectedCell inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
         unlink([pathToMovie UTF8String]);
+        selectedCell = -1;
     }
 }
 
