@@ -51,14 +51,25 @@
     UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removeVideo)];
     NSArray* toolbarItems = [NSArray arrayWithObjects:flexibleSpace, playButton, flexibleSpace, removeButton, flexibleSpace, nil];
     self.toolbarItems = toolbarItems;
-    self.navigationController.toolbarHidden = NO;
     [self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
+    
+    [self.tableView setSeparatorColor:[UIColor blackColor]];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // TODO
 }
 
 #pragma mark - Table view data source
@@ -79,8 +90,18 @@
 {
     LibraryCell *libraryCell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
     
-    libraryCell.itemLabel.text = [libraryFiles objectAtIndex:indexPath.item];
     NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:indexPath.item]];
+    
+//    NSURL *sourceMovieURL = [NSURL fileURLWithPath:videoPath];
+//    AVURLAsset *sourceAsset = [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
+//    CMTime duration = sourceAsset.duration;
+    
+    libraryCell.itemLabel1.text = @"hello";
+    libraryCell.itemLabel2.text = @"world";
+    libraryCell.itemImage.layer.cornerRadius = 10.0;
+    libraryCell.itemImage.layer.masksToBounds = YES;
+    libraryCell.itemImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    libraryCell.itemImage.layer.borderWidth = 2.0;
     libraryCell.itemImage.image = [self thumbnailImageForVideo:[NSURL fileURLWithPath:videoPath]];
     
     return libraryCell;
@@ -88,7 +109,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 140;
 }
 
 /*
@@ -134,6 +155,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    for (NSIndexPath * visibleItemIndexPath in self.tableView.indexPathsForVisibleRows) {
+        LibraryCell *visibleLibraryCell = (LibraryCell *)[tableView cellForRowAtIndexPath:visibleItemIndexPath];
+        visibleLibraryCell.itemImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    }
+    
+    LibraryCell *libraryCell = (LibraryCell *)[tableView cellForRowAtIndexPath:indexPath];
+    libraryCell.itemImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

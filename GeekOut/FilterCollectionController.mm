@@ -40,6 +40,8 @@
     
     [self.navigationController.navigationItem setBackBarButtonItem:backButton];
     
+    [self.navigationController setToolbarHidden:YES];
+    
     filterLabels = [[NSArray alloc] initWithObjects:@"Vignette", @"Sepia", @"Steel Blue", @"Terra Cotta", @"Olive", @"Byzantium", @"Amatorka", @"Miss Etikate", @"Soft Elegance", @"Sketch", @"Sketch 2", @"Toon", @"Smooth Toon", @"Emboss", @"Posterize", @"Tilt Shift", @"Sobel Edge", @"Canny Edge", nil];
     
     filterImages = [[NSMutableArray alloc] init];
@@ -77,13 +79,14 @@
 {
     FilterCell *filterCell = (FilterCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"FilterCell" forIndexPath:indexPath];
     
-    filterCell.filterImage.image = [filterImages objectAtIndex:indexPath.item];
     filterCell.filterImage.layer.cornerRadius = 10.0;
     filterCell.filterImage.layer.masksToBounds = YES;
+    filterCell.filterImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    filterCell.filterImage.layer.borderWidth = 2.0;
+    filterCell.filterImage.image = [filterImages objectAtIndex:indexPath.item];
     filterCell.filterLabel.text = [filterLabels objectAtIndex:indexPath.item];
     if ([selectedFilter isEqualToString:filterCell.filterLabel.text]) {
         filterCell.filterImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
-        filterCell.filterImage.layer.borderWidth = 2.0;
     }
     
     return filterCell;
@@ -91,20 +94,18 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    for (NSIndexPath * visibleItemIndexPath in self.collectionView.indexPathsForVisibleItems) {
+    for (NSIndexPath * visibleItemIndexPath in collectionView.indexPathsForVisibleItems) {
         FilterCell *visibleFilterCell = (FilterCell *)[collectionView cellForItemAtIndexPath:visibleItemIndexPath];
-        visibleFilterCell.filterImage.layer.borderWidth = 0.0;
-        [visibleFilterCell.filterLabel setTextColor:[UIColor whiteColor]];
+        visibleFilterCell.filterImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     }
     
     FilterCell *filterCell = (FilterCell *)[collectionView cellForItemAtIndexPath:indexPath];
     filterCell.filterImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
-    filterCell.filterImage.layer.borderWidth = 2.0;
+    
+    self.selectedFilter = filterCell.filterLabel.text;
     
     if ([changeVideoFilterDelegate respondsToSelector:@selector(changeVideoFilter:)])
     {
-        self.selectedFilter = filterCell.filterLabel.text;
-        
         // send the delegate function with the index of filter
         [changeVideoFilterDelegate changeVideoFilter:self.selectedFilter];
     }

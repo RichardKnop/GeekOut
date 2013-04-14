@@ -48,10 +48,8 @@
     UIBarButtonItem *pauseButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pauseCapture)];
     UIBarButtonItem *startRecordingButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered target:self action:@selector(startRecording)];
     [startRecordingButton setTag:99];
-    UIBarButtonItem *stopRecordingButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveRecorded)];
-    NSArray* toolbarItems = [NSArray arrayWithObjects:playButton, pauseButton, startRecordingButton, stopRecordingButton, nil];
+    UIBarButtonItem *stopRecordingButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveRecorded)];
     self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, playButton, flexibleSpace, pauseButton, flexibleSpace, startRecordingButton, flexibleSpace, stopRecordingButton, flexibleSpace, nil];
-    self.navigationController.toolbarHidden = NO;
     [self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
     
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
@@ -92,7 +90,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // TODO
+    [self.navigationController setToolbarHidden:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
