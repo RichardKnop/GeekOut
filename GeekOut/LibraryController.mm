@@ -58,8 +58,9 @@
     
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *playButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(playVideo)];
+    UIBarButtonItem *moveToCameraRollButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveToCameraRoll)];
     UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removeVideo)];
-    NSArray* toolbarItems = [NSArray arrayWithObjects:flexibleSpace, playButton, flexibleSpace, removeButton, flexibleSpace, nil];
+    NSArray* toolbarItems = [NSArray arrayWithObjects:flexibleSpace, playButton, flexibleSpace, moveToCameraRollButton, flexibleSpace, removeButton, flexibleSpace, nil];
     self.toolbarItems = toolbarItems;
     [self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
     
@@ -260,6 +261,20 @@
 - (void)moviePlayBackDonePressed
 {
     NSLog(@"bbb");
+}
+
+- (void)moveToCameraRoll
+{
+    if (-1 != selectedCell) {
+        NSString *pathToMovie = [NSString stringWithFormat: @"%@/%@/%@", NSHomeDirectory() , @"Documents", [libraryFiles objectAtIndex:selectedCell]];
+        UISaveVideoAtPathToSavedPhotosAlbum(pathToMovie, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        selectedCell = -1;
+    }
+}
+
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    NSLog([error localizedDescription]);
 }
 
 - (void)removeVideo

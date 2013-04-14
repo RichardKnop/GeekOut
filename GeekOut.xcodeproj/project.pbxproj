@@ -77,7 +77,7 @@
 		D92119F6171B2A1900D17FEE /* apple-touch-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-touch-icon-iphone.png"; sourceTree = "<group>"; };
 		D9473D151719619D000BABE2 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		D9473D22171962C9000BABE2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		D9725C8617108C060083290D /* GeekOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9725C8617108C060083290D /* GeekOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GeekOut.app; path = Lensy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9725C8917108C060083290D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D9725C8B17108C060083290D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9725C8D17108C060083290D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,7 +156,6 @@
 		D9725C7D17108C060083290D = {
 			isa = PBXGroup;
 			children = (
-				D92119EC171B192D00D17FEE /* MediaPlayer.framework */,
 				D9725C8F17108C060083290D /* GeekOut */,
 				D9725C8817108C060083290D /* Frameworks */,
 				D9725C8717108C060083290D /* Products */,
@@ -174,6 +173,7 @@
 		D9725C8817108C060083290D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D92119EC171B192D00D17FEE /* MediaPlayer.framework */,
 				D9473D151719619D000BABE2 /* GPUImage.xcodeproj */,
 				D9725CC41710A44F0083290D /* QuartzCore.framework */,
 				D9725CC21710A4450083290D /* CoreImage.framework */,
