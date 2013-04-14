@@ -16,6 +16,9 @@
 @implementation LibraryController
 
 @synthesize libraryFiles;
+@synthesize thumbnails;
+@synthesize durations;
+@synthesize selectedCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,13 +39,20 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    selectedCell = -1;
+    
     self.view.backgroundColor = [UIColor blackColor];
     
     libraryFiles = [[NSMutableArray alloc] init];
+    thumbnails = [[NSMutableArray alloc] init];
+    durations = [[NSMutableArray alloc] init];
+    
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] error:NULL];
     for (NSString *file in files) {
         if (NSNotFound != [file rangeOfString:@".m4v"].location) {
             [libraryFiles addObject:file];
+            [thumbnails addObject:[NSNull null]];
+            [durations addObject:@""];
         }
     }
     
@@ -92,17 +102,55 @@
     
     NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:indexPath.item]];
     
-//    NSURL *sourceMovieURL = [NSURL fileURLWithPath:videoPath];
-//    AVURLAsset *sourceAsset = [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
-//    CMTime duration = sourceAsset.duration;
+    if ([[durations objectAtIndex:indexPath.item] isEqualToString:@""]) {
+        libraryCell.itemLabel1.text = @"";
+        
+        void (^blockLoadDuration)() =  ^{
+            NSURL *sourceMovieURL = [NSURL fileURLWithPath:videoPath];
+            AVURLAsset *sourceAsset = [AVURLAsset URLAssetWithURL:sourceMovieURL options:nil];
+            CMTime duration = sourceAsset.duration;
+            NSUInteger totalSeconds = CMTimeGetSeconds(duration);
+            NSUInteger hours = floor(totalSeconds / 3600);
+            NSUInteger minutes = floor(totalSeconds % 3600 / 60);
+            NSUInteger seconds = floor(totalSeconds % 3600 % 60);
+            NSString *durationString = [NSString stringWithFormat:@"%i:%02i:%02i", hours, minutes, seconds];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [durations replaceObjectAtIndex:indexPath.item withObject:durationString];
+                libraryCell.itemLabel1.text = durationString;
+            });
+        };
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), blockLoadDuration);
+    } else {
+        libraryCell.itemLabel1.text = [durations objectAtIndex:indexPath.item];
+    }
     
-    libraryCell.itemLabel1.text = @"hello";
     libraryCell.itemLabel2.text = @"world";
+    
     libraryCell.itemImage.layer.cornerRadius = 10.0;
     libraryCell.itemImage.layer.masksToBounds = YES;
-    libraryCell.itemImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     libraryCell.itemImage.layer.borderWidth = 2.0;
-    libraryCell.itemImage.image = [self thumbnailImageForVideo:[NSURL fileURLWithPath:videoPath]];
+    if (indexPath.item != selectedCell) {
+        libraryCell.itemImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    } else {
+        libraryCell.itemImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
+    }
+    
+    if ([[thumbnails objectAtIndex:indexPath.item] isKindOfClass:[UIImage class]]) {
+        libraryCell.itemImage.image = [thumbnails objectAtIndex:indexPath.item];
+    } else {
+        libraryCell.itemImage.image = [[UIImage alloc] init];
+        
+        void (^blockLoadThumbnail)() =  ^{
+            UIImage *_imageTemporary = [self thumbnailImageForVideo:[NSURL fileURLWithPath:videoPath]];
+            dispatch_async(dispatch_get_main_queue(),^{
+                [thumbnails replaceObjectAtIndex:indexPath.item withObject:_imageTemporary];
+                libraryCell.itemImage.image = _imageTemporary;
+            });
+        };
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), blockLoadThumbnail);
+    }
     
     return libraryCell;
 }
@@ -155,13 +203,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    for (NSIndexPath * visibleItemIndexPath in self.tableView.indexPathsForVisibleRows) {
+    for (NSIndexPath * visibleItemIndexPath in tableView.indexPathsForVisibleRows) {
         LibraryCell *visibleLibraryCell = (LibraryCell *)[tableView cellForRowAtIndexPath:visibleItemIndexPath];
         visibleLibraryCell.itemImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     }
     
     LibraryCell *libraryCell = (LibraryCell *)[tableView cellForRowAtIndexPath:indexPath];
     libraryCell.itemImage.layer.borderColor = [UIColor colorWithRed:109.0f/255.0f green:158.0f/255.0f blue:235.0f/255.0f alpha:1.0].CGColor;
+    
+    selectedCell = indexPath.item;
     
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -186,16 +236,29 @@
 
 - (void)playVideo
 {
-//    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+//    NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:selectedCell]];
+//    NSURL *url=[[NSURL alloc] initWithString:videoPath];
+//    MPMoviePlayerController *moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:url];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDonePressed:) name:MPMoviePlayerDidExitFullscreenNotification object:moviePlayer];
+//    
+//    moviePlayer.controlStyle=MPMovieControlStyleDefault;
+//    //moviePlayer.shouldAutoplay=NO;
+//    [moviePlayer play];
+//    [self.view addSubview:moviePlayer.view];
+//    [moviePlayer setFullscreen:YES animated:YES];
 }
 
 - (void)removeVideo
 {
-    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-    NSString *pathToMovie = [NSString stringWithFormat: @"%@/%@/%@", NSHomeDirectory() , @"Documents", [libraryFiles objectAtIndex:selectedIndexPath.item]];
-    [libraryFiles removeObjectAtIndex:selectedIndexPath.item];
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-    unlink([pathToMovie UTF8String]);
+    if (-1 != selectedCell) {
+        NSString *pathToMovie = [NSString stringWithFormat: @"%@/%@/%@", NSHomeDirectory() , @"Documents", [libraryFiles objectAtIndex:selectedCell]];
+        [libraryFiles removeObjectAtIndex:selectedCell];
+        [durations removeObjectAtIndex:selectedCell];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:selectedCell inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        unlink([pathToMovie UTF8String]);
+    }
 }
 
 @end
