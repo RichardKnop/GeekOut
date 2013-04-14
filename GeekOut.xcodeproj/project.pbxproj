@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D90EA71C1714B7FE0049C234 /* Filter.mm in Sources */ = {isa = PBXBuildFile; fileRef = D90EA71B1714B7FE0049C234 /* Filter.mm */; };
 		D92119ED171B192D00D17FEE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D92119EC171B192D00D17FEE /* MediaPlayer.framework */; };
+		D92119F7171B2A1900D17FEE /* apple-touch-icon-iphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = D92119F5171B2A1900D17FEE /* apple-touch-icon-iphone4.png */; };
+		D92119F8171B2A1900D17FEE /* apple-touch-icon-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D92119F6171B2A1900D17FEE /* apple-touch-icon-iphone.png */; };
 		D9473D211719629C000BABE2 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9473D1C1719619D000BABE2 /* libGPUImage.a */; };
 		D9473D23171962C9000BABE2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9473D22171962C9000BABE2 /* OpenGLES.framework */; };
 		D9725C8A17108C060083290D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9725C8917108C060083290D /* UIKit.framework */; };
@@ -71,6 +73,8 @@
 		D90EA71A1714B7FE0049C234 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		D90EA71B1714B7FE0049C234 /* Filter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Filter.mm; sourceTree = "<group>"; };
 		D92119EC171B192D00D17FEE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		D92119F5171B2A1900D17FEE /* apple-touch-icon-iphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-touch-icon-iphone4.png"; sourceTree = "<group>"; };
+		D92119F6171B2A1900D17FEE /* apple-touch-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-touch-icon-iphone.png"; sourceTree = "<group>"; };
 		D9473D151719619D000BABE2 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		D9473D22171962C9000BABE2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D9725C8617108C060083290D /* GeekOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +218,8 @@
 		D9725C9017108C060083290D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D92119F5171B2A1900D17FEE /* apple-touch-icon-iphone4.png */,
+				D92119F6171B2A1900D17FEE /* apple-touch-icon-iphone.png */,
 				D978B6D11711D0E000805433 /* flower.png */,
 				D98F32051719B959006EF1F5 /* lookup_amatorka.png */,
 				D98F32061719B959006EF1F5 /* lookup_miss_etikate.png */,
@@ -234,9 +240,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9725C8517108C060083290D /* GeekOut */ = {
+		D9725C8517108C060083290D /* Lensy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9725CA917108C060083290D /* Build configuration list for PBXNativeTarget "GeekOut" */;
+			buildConfigurationList = D9725CA917108C060083290D /* Build configuration list for PBXNativeTarget "Lensy" */;
 			buildPhases = (
 				D9725C8317108C060083290D /* Frameworks */,
 				D9725C8217108C060083290D /* Sources */,
@@ -247,7 +253,7 @@
 			dependencies = (
 				D9473D20171961E8000BABE2 /* PBXTargetDependency */,
 			);
-			name = GeekOut;
+			name = Lensy;
 			productName = GeekOut;
 			productReference = D9725C8617108C060083290D /* GeekOut.app */;
 			productType = "com.apple.product-type.application";
@@ -279,7 +285,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				D9725C8517108C060083290D /* GeekOut */,
+				D9725C8517108C060083290D /* Lensy */,
 			);
 		};
 /* End PBXProject section */
@@ -317,6 +323,8 @@
 				D98F320C1719B959006EF1F5 /* lookup_soft_elegance_1.png in Resources */,
 				D98F320D1719B959006EF1F5 /* lookup_soft_elegance_2.png in Resources */,
 				D98F320E1719B959006EF1F5 /* lookup.png in Resources */,
+				D92119F7171B2A1900D17FEE /* apple-touch-icon-iphone4.png in Resources */,
+				D92119F8171B2A1900D17FEE /* apple-touch-icon-iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +403,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = Lensy;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -419,6 +428,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = Lensy;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -477,7 +487,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9725CA917108C060083290D /* Build configuration list for PBXNativeTarget "GeekOut" */ = {
+		D9725CA917108C060083290D /* Build configuration list for PBXNativeTarget "Lensy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9725CAA17108C060083290D /* Debug */,
