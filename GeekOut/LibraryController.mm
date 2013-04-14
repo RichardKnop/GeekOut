@@ -18,6 +18,7 @@
 @synthesize libraryFiles;
 @synthesize thumbnails;
 @synthesize durations;
+@synthesize beingMovedToCameraRoll;
 @synthesize selectedCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -46,6 +47,7 @@
     libraryFiles = [[NSMutableArray alloc] init];
     thumbnails = [[NSMutableArray alloc] init];
     durations = [[NSMutableArray alloc] init];
+    beingMovedToCameraRoll = [[NSMutableArray alloc] init];
     
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] error:NULL];
     for (NSString *file in files) {
@@ -267,8 +269,18 @@
 {
     if (-1 != selectedCell) {
         NSString *pathToMovie = [NSString stringWithFormat: @"%@/%@/%@", NSHomeDirectory() , @"Documents", [libraryFiles objectAtIndex:selectedCell]];
-        UISaveVideoAtPathToSavedPhotosAlbum(pathToMovie, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+
+        [libraryFiles removeObjectAtIndex:selectedCell];
+        [thumbnails removeObjectAtIndex:selectedCell];
+        [durations removeObjectAtIndex:selectedCell];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForItem:selectedCell inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        
         selectedCell = -1;
+        
+        ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+        [library writeVideoAtPathToSavedPhotosAlbum:[NSURL fileURLWithPath:pathToMovie] completionBlock:^(NSURL *assetURL, NSError *error) {
+            unlink([pathToMovie UTF8String]);
+        }];
     }
 }
 
