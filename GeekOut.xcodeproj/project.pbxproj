@@ -46,6 +46,10 @@
 		D9EAE0571719F38300741504 /* button-stop.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE0531719F38300741504 /* button-stop.png */; };
 		D9EAE05E171A08CF00741504 /* LibraryController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9EAE05D171A08CE00741504 /* LibraryController.mm */; };
 		D9EAE061171A093000741504 /* LibraryCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9EAE060171A093000741504 /* LibraryCell.mm */; };
+		D9EAE063171A1E4200741504 /* film.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE062171A1E4200741504 /* film.png */; };
+		D9EAE065171A1E4D00741504 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE064171A1E4D00741504 /* gear.png */; };
+		D9EAE069171A1E6600741504 /* hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE068171A1E6500741504 /* hd.png */; };
+		D9EAE06B171A1E9700741504 /* recycle-bin.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EAE06A171A1E9700741504 /* recycle-bin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +126,10 @@
 		D9EAE05D171A08CE00741504 /* LibraryController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryController.mm; sourceTree = "<group>"; };
 		D9EAE05F171A093000741504 /* LibraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
 		D9EAE060171A093000741504 /* LibraryCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryCell.mm; sourceTree = "<group>"; };
+		D9EAE062171A1E4200741504 /* film.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = film.png; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/film.png"; sourceTree = "<group>"; };
+		D9EAE064171A1E4D00741504 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gear.png; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/gear.png"; sourceTree = "<group>"; };
+		D9EAE068171A1E6500741504 /* hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hd.png; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/hd.png"; sourceTree = "<group>"; };
+		D9EAE06A171A1E9700741504 /* recycle-bin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "recycle-bin.png"; path = "../../../Downloads/iconbeast-lite/iconbeast lite - png/recycle-bin.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +209,6 @@
 		D9725C8F17108C060083290D /* GeekOut */ = {
 			isa = PBXGroup;
 			children = (
-				D978B6D11711D0E000805433 /* flower.png */,
 				D9725C9817108C060083290D /* AppDelegate.h */,
 				D9725C9917108C060083290D /* AppDelegate.mm */,
 				D9725CA117108C060083290D /* MainStoryboard.storyboard */,
@@ -226,6 +233,11 @@
 		D9725C9017108C060083290D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9EAE06A171A1E9700741504 /* recycle-bin.png */,
+				D978B6D11711D0E000805433 /* flower.png */,
+				D9EAE068171A1E6500741504 /* hd.png */,
+				D9EAE064171A1E4D00741504 /* gear.png */,
+				D9EAE062171A1E4200741504 /* film.png */,
 				D9EAE0501719F38300741504 /* button-pause.png */,
 				D9EAE0511719F38300741504 /* button-play.png */,
 				D9EAE0521719F38300741504 /* button-record.png */,
@@ -337,6 +349,10 @@
 				D9EAE0551719F38300741504 /* button-play.png in Resources */,
 				D9EAE0561719F38300741504 /* button-record.png in Resources */,
 				D9EAE0571719F38300741504 /* button-stop.png in Resources */,
+				D9EAE063171A1E4200741504 /* film.png in Resources */,
+				D9EAE065171A1E4D00741504 /* gear.png in Resources */,
+				D9EAE069171A1E6600741504 /* hd.png in Resources */,
+				D9EAE06B171A1E9700741504 /* recycle-bin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

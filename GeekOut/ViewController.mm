@@ -21,18 +21,18 @@
 @synthesize filteredVideoView;
 @synthesize movieWriter;
 @synthesize movieFile;
-@synthesize isStarted;
+@synthesize isCaptureStarted;
 @synthesize isRecording;
 @synthesize selectedFilter;
 @synthesize recordingDestination;
-@synthesize toolbar;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    isStarted = NO;
+    isCaptureStarted = NO;
+    isRecording = NO;
     selectedFilter = @"None";
     
     UIBarButtonItem *filtersButton = [[UIBarButtonItem alloc] initWithTitle:@"Filters" style:UIBarButtonItemStyleBordered target:self action:@selector(filtersClicked)];
@@ -42,7 +42,17 @@
     self.navigationItem.leftBarButtonItem = libraryButton;
     
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-    [toolbar setBarStyle:UIBarStyleBlackOpaque];
+
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *playButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(startCapture)];
+    UIBarButtonItem *pauseButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pauseCapture)];
+    UIBarButtonItem *startRecordingButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered target:self action:@selector(startRecording)];
+    [startRecordingButton setTag:99];
+    UIBarButtonItem *stopRecordingButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(saveRecorded)];
+    NSArray* toolbarItems = [NSArray arrayWithObjects:playButton, pauseButton, startRecordingButton, stopRecordingButton, nil];
+    self.toolbarItems = [NSArray arrayWithObjects:flexibleSpace, playButton, flexibleSpace, pauseButton, flexibleSpace, startRecordingButton, flexibleSpace, stopRecordingButton, flexibleSpace, nil];
+    self.navigationController.toolbarHidden = NO;
+    [self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
     
     videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
     videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
@@ -51,14 +61,7 @@
     
     [self changeVideoFilter:selectedFilter];
     
-    NSDate *date = [NSDate date];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd-HH-mm-SS"];
-    NSString *destinationFolder = @"Documents";
-    NSString *extension = @"m4v";
-    recordingDestination = [NSString stringWithFormat: @"%@/%@.%@", destinationFolder, [dateFormat stringFromDate:date], extension];
-    
-//    [self listFileAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];
+    recordingDestination = [self generateRecordingDestination];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -115,47 +118,79 @@
     [self performSegueWithIdentifier:@"GoToLibrarySegue" sender:self];
 }
 
-- (IBAction)toggleVideoAction:(id)sender;
+- (void)startCapture
 {
-    if (isStarted == NO) {
-        isStarted = YES;
-        self.startButton.image = [UIImage imageNamed:@"button-pause.png"];
+    if (isCaptureStarted == NO) {
+        isCaptureStarted = YES;
         [videoCamera startCameraCapture];
-    } else {
-        isStarted = NO;
-        self.startButton.image = [UIImage imageNamed:@"button-play.png"];
-        [videoCamera stopCameraCapture];
     }
 }
 
-- (IBAction)toggleRecordAction:(id)sender {
-    if (isRecording == NO && isStarted == YES) {
-        isRecording = YES;
-        self.recordButton.image = [UIImage imageNamed:@"button-stop.png"];
-        
+- (void)pauseCapture
+{
+    if (isCaptureStarted == YES) {
+        isCaptureStarted = NO;
+        [videoCamera stopCameraCapture];
+        if (isRecording == YES) {
+            [self saveRecorded];
+        }
+    }
+}
+
+- (void)startRecording
+{
+    if (isRecording == NO && isCaptureStarted == YES) {
         NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:recordingDestination];
         unlink([pathToMovie UTF8String]);
         NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
-        
+    
         movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(1280.0, 720.0)];
         [videoCameraFilter addTarget:movieWriter];
-        
+    
         movieWriter.shouldPassthroughAudio = YES;
         movieFile.audioEncodingTarget = movieWriter;
         [movieFile enableSynchronizedEncodingUsingMovieWriter:movieWriter];
-        
+    
         [movieWriter startRecording];
         [movieFile startProcessing];
-        
+    
         [movieWriter setCompletionBlock:^{
             [videoCameraFilter removeTarget:movieWriter];
             [movieWriter finishRecording];
         }];
-    } else if (isRecording == YES) {
-        isRecording = NO;
-        self.recordButton.image = [UIImage imageNamed:@"button-record.png"];
-        [movieWriter completionBlock];
+        
+        for (UIBarButtonItem *toolbarItem in self.toolbarItems) {
+            if (99 == toolbarItem.tag) {
+                toolbarItem.title = @"Recording";
+            }
+        }
+        
+        isRecording = YES;
     }
+}
+
+- (void)saveRecorded
+{
+    if (isRecording == YES) {
+        [movieWriter completionBlock];
+        for (UIBarButtonItem *toolbarItem in self.toolbarItems) {
+            if (99 == toolbarItem.tag) {
+                toolbarItem.title = @"Record";
+            }
+        }
+        recordingDestination = [self generateRecordingDestination];
+        isRecording = NO;
+    }
+}
+
+- (NSString *)generateRecordingDestination
+{
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd-HH-mm-SS"];
+    NSString *destinationFolder = @"Documents";
+    NSString *extension = @"m4v";
+    return [NSString stringWithFormat: @"%@/%@.%@", destinationFolder, [dateFormat stringFromDate:date], extension];
 }
 
 - (NSArray *)listFileAtPath:(NSString *)path

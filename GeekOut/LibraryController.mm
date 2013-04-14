@@ -46,6 +46,13 @@
         }
     }
     
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *playButton =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(playVideo)];
+    UIBarButtonItem *removeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removeVideo)];
+    NSArray* toolbarItems = [NSArray arrayWithObjects:flexibleSpace, playButton, flexibleSpace, removeButton, flexibleSpace, nil];
+    self.toolbarItems = toolbarItems;
+    self.navigationController.toolbarHidden = NO;
+    [self.navigationController.toolbar setBarStyle:UIBarStyleBlackOpaque];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,16 +79,16 @@
 {
     LibraryCell *libraryCell = [tableView dequeueReusableCellWithIdentifier:@"LibraryCell" forIndexPath:indexPath];
     
-    libraryCell.itemLabel.text = @"TODO";
+    libraryCell.itemLabel.text = [libraryFiles objectAtIndex:indexPath.item];
     NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:indexPath.item]];
-    libraryCell.itemImage.image = [self thumbnailImageForVideo:[NSURL URLWithString:videoPath]];
+    libraryCell.itemImage.image = [self thumbnailImageForVideo:[NSURL fileURLWithPath:videoPath]];
     
     return libraryCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 100;
 }
 
 /*
@@ -143,10 +150,23 @@
     NSError *err = NULL;
     CMTime time = CMTimeMake(1, 1);
     CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:&err];
-    NSLog(@"err==%@, imageRef==%@", err, imageRef);
     UIImage *thumbnail = [[UIImage alloc] initWithCGImage:imageRef];
     CGImageRelease(imageRef); // CGImageRef won't be released by ARC
     return thumbnail;
+}
+
+- (void)playVideo
+{
+//    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+}
+
+- (void)removeVideo
+{
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    NSString *pathToMovie = [NSString stringWithFormat: @"%@/%@/%@", NSHomeDirectory() , @"Documents", [libraryFiles objectAtIndex:selectedIndexPath.item]];
+    [libraryFiles removeObjectAtIndex:selectedIndexPath.item];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    unlink([pathToMovie UTF8String]);
 }
 
 @end
