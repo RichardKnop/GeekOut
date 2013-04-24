@@ -8,6 +8,7 @@
 
 #import "LibraryController.h"
 #import "LibraryCell.h"
+#import "HumanReadableDataSizeHelper.h"
 
 @interface LibraryController ()
 
@@ -47,6 +48,7 @@
     libraryFiles = [[NSMutableArray alloc] init];
     thumbnails = [[NSMutableArray alloc] init];
     durations = [[NSMutableArray alloc] init];
+    filesizes = [[NSMutableArray alloc] init];
     beingMovedToCameraRoll = [[NSMutableArray alloc] init];
     
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] error:NULL];
@@ -55,6 +57,7 @@
             [libraryFiles addObject:file];
             [thumbnails addObject:[NSNull null]];
             [durations addObject:@""];
+            [filesizes addObject:@""];
         }
     }
     
@@ -128,7 +131,27 @@
         libraryCell.itemLabel1.text = [durations objectAtIndex:indexPath.item];
     }
     
-    libraryCell.itemLabel2.text = @"world";
+    if ([[filesizes objectAtIndex:indexPath.item] isEqualToString:@""]) {
+        libraryCell.itemLabel2.text = @"";
+        
+        void (^blockLoadDuration)() =  ^{
+            NSError *error = nil;
+            NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:videoPath error:&error];
+            if (!error) {
+                NSNumber *size = [attributes objectForKey:NSFileSize];
+                HumanReadableDataSizeHelper *helper = [[HumanReadableDataSizeHelper alloc] init];
+                dispatch_async(dispatch_get_main_queue(),^{
+                    NSString *filesizeString = [helper humanReadableSizeFromBytes:size];
+                    [filesizes replaceObjectAtIndex:indexPath.item withObject:filesizeString];
+                    libraryCell.itemLabel2.text = filesizeString;
+                });
+            }
+        };
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), blockLoadDuration);
+    } else {
+        libraryCell.itemLabel2.text = [filesizes objectAtIndex:indexPath.item];
+    }
     
     libraryCell.itemImage.layer.cornerRadius = 10.0;
     libraryCell.itemImage.layer.masksToBounds = YES;
@@ -241,28 +264,38 @@
 {
     if (-1 != selectedCell) {
         NSString *videoPath = [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], [libraryFiles objectAtIndex:selectedCell]];
-        NSLog(videoPath);
-        NSURL *url=[[NSURL alloc] initWithString:videoPath];
-        MPMoviePlayerController *moviePlayer=[[MPMoviePlayerController alloc] initWithContentURL:url];
+        
+        NSURL *url=[NSURL fileURLWithPath:videoPath];
+        movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
     
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:moviePlayer];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDonePressed) name:MPMoviePlayerDidExitFullscreenNotification object:moviePlayer];
-    
-        moviePlayer.controlStyle=MPMovieControlStyleDefault;
-        [moviePlayer play];
-        [self.view addSubview:moviePlayer.view];
-        [moviePlayer setFullscreen:YES animated:YES];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:movieController.moviePlayer];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayBackDonePressed:) name:MPMoviePlayerDidExitFullscreenNotification object:movieController.moviePlayer];
+        
+        [self presentMoviePlayerViewControllerAnimated:movieController];
+        [movieController.moviePlayer play];
     }
 }
 
-- (void)moviePlayBackDidFinish
+- (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
-    NSLog(@"aaa");
+    NSError *error = [[notification userInfo] objectForKey:@"error"];
+    if (error) {
+        NSLog(@"Playback did finish with error: %@", error);
+    }
+    
+    [movieController.moviePlayer stop];
+    [self.movieController removeFromParentViewController];
 }
 
-- (void)moviePlayBackDonePressed
+- (void)moviePlayBackDonePressed:(NSNotification*)notification
 {
-    NSLog(@"bbb");
+    NSError *error = [[notification userInfo] objectForKey:@"error"];
+    if (error) {
+        NSLog(@"Playback done with error: %@", error);
+    }
+    
+    [movieController.moviePlayer stop];
+    [self.movieController removeFromParentViewController];
 }
 
 - (void)moveToCameraRoll

@@ -41,6 +41,7 @@
 		D98F320C1719B959006EF1F5 /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */; };
 		D98F320D1719B959006EF1F5 /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */; };
 		D98F320E1719B959006EF1F5 /* lookup.png in Resources */ = {isa = PBXBuildFile; fileRef = D98F32091719B959006EF1F5 /* lookup.png */; };
+		D9C73BD0172880770023035D /* HumanReadableDataSizeHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9C73BCF172880770023035D /* HumanReadableDataSizeHelper.mm */; };
 		D9EAE05E171A08CF00741504 /* LibraryController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9EAE05D171A08CE00741504 /* LibraryController.mm */; };
 		D9EAE061171A093000741504 /* LibraryCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = D9EAE060171A093000741504 /* LibraryCell.mm */; };
 /* End PBXBuildFile section */
@@ -77,7 +78,7 @@
 		D92119F6171B2A1900D17FEE /* apple-touch-icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-touch-icon-iphone.png"; sourceTree = "<group>"; };
 		D9473D151719619D000BABE2 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		D9473D22171962C9000BABE2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		D9725C8617108C060083290D /* GeekOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GeekOut.app; path = Lensy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9725C8617108C060083290D /* Lensy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lensy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9725C8917108C060083290D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D9725C8B17108C060083290D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9725C8D17108C060083290D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +113,8 @@
 		D98F32071719B959006EF1F5 /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_1.png; path = ../../GPUImage/framework/Resources/lookup_soft_elegance_1.png; sourceTree = "<group>"; };
 		D98F32081719B959006EF1F5 /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup_soft_elegance_2.png; path = ../../GPUImage/framework/Resources/lookup_soft_elegance_2.png; sourceTree = "<group>"; };
 		D98F32091719B959006EF1F5 /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lookup.png; path = ../../GPUImage/framework/Resources/lookup.png; sourceTree = "<group>"; };
+		D9C73BCE172880770023035D /* HumanReadableDataSizeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HumanReadableDataSizeHelper.h; sourceTree = "<group>"; };
+		D9C73BCF172880770023035D /* HumanReadableDataSizeHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HumanReadableDataSizeHelper.mm; sourceTree = "<group>"; };
 		D9EAE05C171A08CE00741504 /* LibraryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryController.h; sourceTree = "<group>"; };
 		D9EAE05D171A08CE00741504 /* LibraryController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LibraryController.mm; sourceTree = "<group>"; };
 		D9EAE05F171A093000741504 /* LibraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryCell.h; sourceTree = "<group>"; };
@@ -165,7 +168,7 @@
 		D9725C8717108C060083290D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9725C8617108C060083290D /* GeekOut.app */,
+				D9725C8617108C060083290D /* Lensy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,6 +213,8 @@
 				D9EAE05D171A08CE00741504 /* LibraryController.mm */,
 				D90EA71A1714B7FE0049C234 /* Filter.h */,
 				D90EA71B1714B7FE0049C234 /* Filter.mm */,
+				D9C73BCE172880770023035D /* HumanReadableDataSizeHelper.h */,
+				D9C73BCF172880770023035D /* HumanReadableDataSizeHelper.mm */,
 				D9725C9017108C060083290D /* Supporting Files */,
 			);
 			path = GeekOut;
@@ -255,7 +260,7 @@
 			);
 			name = Lensy;
 			productName = GeekOut;
-			productReference = D9725C8617108C060083290D /* GeekOut.app */;
+			productReference = D9725C8617108C060083290D /* Lensy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -343,6 +348,7 @@
 				D90EA71C1714B7FE0049C234 /* Filter.mm in Sources */,
 				D9EAE05E171A08CF00741504 /* LibraryController.mm in Sources */,
 				D9EAE061171A093000741504 /* LibraryCell.mm in Sources */,
+				D9C73BD0172880770023035D /* HumanReadableDataSizeHelper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
